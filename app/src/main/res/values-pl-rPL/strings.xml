@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SchoolPlaner</string>
+    <string name="navigation_drawer_open">Otwórz panel nawigacji</string>
+    <string name="navigation_drawer_close">Zamknij panel nawigacji</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="menu_subjects">Przedmioty</string>
+    <string name="menu_marks">Oceny</string>
+    <string name="menu_teachers">Nauczyciele</string>
+    <string name="menu_events">Wydarzenia</string>
+    <string name="menu_notes">Notatki</string>
+    <string name="hello_blank_fragment">Pusty fragment</string>
+</resources>
