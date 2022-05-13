@@ -3,14 +3,17 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_subjects">Subjects</string>
     <string name="menu_marks">Marks</string>
     <string name="menu_teachers">Teachers</string>
     <string name="menu_events">Events</string>
     <string name="menu_notes">Notes</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Blank fragment</string>
-    <!-- Strings used for fragments for navigation -->
-
+    <string name="addSubjectTitle">Add subject</string>
+    <string name="addSubjectTitle_editText">Name</string>
+    <string name="addSubjectLocation_editText">Location</string>
+    <string name="addSubjectType_editText">Type</string>
+    <string name="addSubjectShortcut_editText">Shortcut</string>
+    <string name="addSubjectTeacher_editText">Teacher</string>
+    <string name="addSubjectButton_editText">Add Subject</string>
+    <string name="addSubjectNotes_editText">Notes</string>
 </resources>

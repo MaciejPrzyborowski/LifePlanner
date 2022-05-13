@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/drawable/side_nav_bar.xml" value="0.1" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/activity_add_subject.xml" value="0.21509433962264152" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/app_bar_main.xml" value="0.1" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_add_subject.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_events.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_home.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_marks.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_notes.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_subjects.xml" value="0.14722222222222223" />
-        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/nav_header_main.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_teachers.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/nav_header_main.xml" value="1.0" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/menu/activity_main_drawer.xml" value="0.3625" />
       </map>
     </option>

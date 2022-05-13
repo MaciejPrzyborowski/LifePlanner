@@ -9,5 +9,12 @@
     <string name="menu_teachers">Nauczyciele</string>
     <string name="menu_events">Wydarzenia</string>
     <string name="menu_notes">Notatki</string>
-    <string name="hello_blank_fragment">Pusty fragment</string>
+    <string name="addSubjectTitle">Dodaj przedmiot</string>
+    <string name="addSubjectTitle_editText">Nazwa</string>
+    <string name="addSubjectLocation_editText">Lokalizacja</string>
+    <string name="addSubjectType_editText">Typ</string>
+    <string name="addSubjectShortcut_editText">Skrót</string>
+    <string name="addSubjectTeacher_editText">Nauczyciel</string>
+    <string name="addSubjectButton_editText">Dodaj przedmiot</string>
+    <string name="addSubjectNotes_editText">Notatka</string>
 </resources>
