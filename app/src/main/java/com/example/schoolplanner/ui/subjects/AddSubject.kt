@@ -92,11 +92,10 @@ class AddSubject : AppCompatActivity() {
             }
         }
         findViewById<Button>(R.id.removeSubjectButton).setOnClickListener {
-            removeSubject(db, intent.hasExtra("ID").toString())
+            removeSubject(db)
             Toast.makeText(applicationContext, R.string.subjectRemoved_toast, Toast.LENGTH_SHORT).show()
             onBackPressed()
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -118,7 +117,7 @@ class AddSubject : AppCompatActivity() {
             arrayOf(intent.getStringExtra("ID")))
     }
 
-    private fun removeSubject(db: SQLiteDatabase, ID : String) {
+    private fun removeSubject(db: SQLiteDatabase) {
         db.delete(Subject_DBInfo.TABLE_NAME, BaseColumns._ID + "=?",
             arrayOf(intent.getStringExtra("ID")))
     }

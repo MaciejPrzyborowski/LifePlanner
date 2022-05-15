@@ -33,6 +33,7 @@ class AddSubjectRecyclerAdapter(context: Context, private val db: SQLiteDatabase
             BaseColumns._ID + "=?", arrayOf(viewHolder.adapterPosition.plus(1).toString()),
             null, null, null)
         if(cursor.moveToFirst()) {
+            viewHolder.subjectID.text = cursor.getInt(0).toString()
             if(cursor.getString(2).isNullOrEmpty()) {
                 viewHolder.subjectName.text = cursor.getString(1)
             }
@@ -45,9 +46,7 @@ class AddSubjectRecyclerAdapter(context: Context, private val db: SQLiteDatabase
 
             viewHolder.itemView.findViewById<CardView>(R.id.cardView).setOnClickListener {
                 val intent = Intent(context, AddSubject::class.java)
-
-                val id = viewHolder.adapterPosition.plus(1).toString()
-                intent.putExtra("ID", id)
+                intent.putExtra("ID", viewHolder.subjectID.text.toString())
                 context.startActivity(intent)
             }
         }
@@ -59,6 +58,7 @@ class AddSubjectRecyclerAdapter(context: Context, private val db: SQLiteDatabase
         var subjectType: TextView = view.findViewById(R.id.subjectType_Card)
         var subjectTeacher: TextView = view.findViewById(R.id.subjectTeacher_Card)
         var subjectLocation: TextView = view.findViewById(R.id.subjectLocation_Card)
+        var subjectID: TextView = view.findViewById(R.id.subjectID_Card)
 
     }
 }

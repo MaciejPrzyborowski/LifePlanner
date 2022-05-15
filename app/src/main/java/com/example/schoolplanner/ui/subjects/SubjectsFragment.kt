@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schoolplanner.DBHelper
+import com.example.schoolplanner.Subject_DBInfo
 import com.example.schoolplanner.databinding.FragmentSubjectsBinding
 
 class SubjectsFragment : Fragment() {
@@ -25,7 +26,6 @@ class SubjectsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSubjectsBinding.inflate(inflater, container, false)
-
 
         binding.addSubject.setOnClickListener {
             val intent = Intent(activity, AddSubject::class.java)
