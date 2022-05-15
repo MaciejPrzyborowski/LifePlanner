@@ -11,10 +11,16 @@
     <string name="menu_notes">Notatki</string>
     <string name="addSubjectTitle">Dodaj przedmiot</string>
     <string name="addSubjectTitle_editText">Nazwa</string>
-    <string name="addSubjectLocation_editText">Lokalizacja</string>
+    <string name="addSubjectLocation_editText">Lokalizacja*</string>
     <string name="addSubjectType_editText">Typ</string>
-    <string name="addSubjectShortcut_editText">Skrót</string>
+    <string name="addSubjectShortcut_editText">Skrót*</string>
     <string name="addSubjectTeacher_editText">Nauczyciel</string>
     <string name="addSubjectButton_editText">Dodaj przedmiot</string>
-    <string name="addSubjectNotes_editText">Notatka</string>
+    <string name="addSubjectNotes_editText">Notatka*</string>
+    <string name="subjectAdded_toast">Przedmiot został dodany</string>
+    <string name="addSubjectError_missing">Nie wprowadzono wymaganych danych</string>
+    <string name="editSubjectButton_editText">Edytuj przedmiot</string>
+    <string name="removeSubjectButton_editText">Usuń przedmiot</string>
+    <string name="subjectEdited_toast">Przedmiot został zmieniony</string>
+    <string name="subjectRemoved_toast">Przedmiot został usunięty</string>
 </resources>

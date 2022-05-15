@@ -10,10 +10,16 @@
     <string name="menu_notes">Notes</string>
     <string name="addSubjectTitle">Add subject</string>
     <string name="addSubjectTitle_editText">Name</string>
-    <string name="addSubjectLocation_editText">Location</string>
+    <string name="addSubjectLocation_editText">Location*</string>
     <string name="addSubjectType_editText">Type</string>
-    <string name="addSubjectShortcut_editText">Shortcut</string>
+    <string name="addSubjectShortcut_editText">Shortcut*</string>
     <string name="addSubjectTeacher_editText">Teacher</string>
     <string name="addSubjectButton_editText">Add Subject</string>
-    <string name="addSubjectNotes_editText">Notes</string>
+    <string name="addSubjectNotes_editText">Note*</string>
+    <string name="subjectAdded_toast">Subject has been added</string>
+    <string name="addSubjectError_missing">The required data has not been entered</string>
+    <string name="editSubjectButton_editText">Edit Subject</string>
+    <string name="removeSubjectButton_editText">RemoveSubject</string>
+    <string name="subjectEdited_toast">Subject has been edited</string>
+    <string name="subjectRemoved_toast">Subject has been removed</string>
 </resources>

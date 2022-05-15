@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15dp"
     android:weightSum="10"
     tools:context=".ui.subjects.AddSubject">
 
@@ -13,23 +14,21 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
         android:weightSum="15">
 
         <ImageView
             android:id="@+id/iconSubjectName"
+            style="@style/addSubject_imageView"
             app:srcCompat="@drawable/ic_baseline_school_24"
             app:tint="#000000"
-            tools:ignore="ContentDescription,NestedWeights"
-            style="@style/addSubject_imageView" />
+            tools:ignore="ContentDescription,NestedWeights" />
 
         <EditText
             android:id="@+id/subjectName"
+            style="@style/addSubject_editText"
             android:hint="@string/addSubjectTitle_editText"
             android:importantForAutofill="no"
-            tools:ignore="TextContrastCheck"
-            style="@style/addSubject_editText" />
+            tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,8 +36,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
         android:weightSum="15">
 
         <ImageView
@@ -61,8 +58,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
         android:weightSum="15">
 
         <ImageView
@@ -85,8 +80,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
         android:weightSum="15">
 
         <ImageView
@@ -109,8 +102,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
         android:weightSum="15">
 
         <ImageView
@@ -133,8 +124,6 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:orientation="horizontal"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
         android:weightSum="15">
 
         <ImageView
@@ -145,11 +134,11 @@
             tools:ignore="ContentDescription,NestedWeights" />
 
         <EditText
-            android:id="@+id/subjectNotes"
-            android:inputType="textMultiLine"
+            android:id="@+id/subjectNote"
             style="@style/addSubject_editText"
             android:hint="@string/addSubjectNotes_editText"
             android:importantForAutofill="no"
+            android:inputType="textMultiLine"
             tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
@@ -160,4 +149,22 @@
         android:layout_weight="1"
         android:backgroundTint="#2E7030"
         android:text="@string/addSubjectButton_editText" />
+
+    <Button
+        android:id="@+id/editSubjectButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="#2A57A6"
+        android:text="@string/editSubjectButton_editText"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/removeSubjectButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:backgroundTint="#871717"
+        android:text="@string/removeSubjectButton_editText"
+        android:visibility="gone" />
 </LinearLayout>
