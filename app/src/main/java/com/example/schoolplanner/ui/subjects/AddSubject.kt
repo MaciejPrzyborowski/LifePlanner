@@ -1,7 +1,6 @@
 package com.example.schoolplanner.ui.subjects
 
 import android.content.ContentValues
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.provider.BaseColumns
@@ -11,9 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.schoolplanner.DBHelper
 import com.example.schoolplanner.R
-import com.example.schoolplanner.Subject_DBInfo
 
 class AddSubject : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +18,7 @@ class AddSubject : AppCompatActivity() {
         setContentView(R.layout.activity_add_subject)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val dbHelper = DBHelper(applicationContext)
+        val dbHelper = SubjectDBHelper(applicationContext)
         val db = dbHelper.writableDatabase
 
         val nameEditText = findViewById<EditText>(R.id.subjectName)
@@ -37,7 +34,7 @@ class AddSubject : AppCompatActivity() {
             findViewById<Button>(R.id.removeSubjectButton).visibility = View.VISIBLE
 
             val cursor = db.rawQuery(
-                "Select * FROM ${Subject_DBInfo.TABLE_NAME} WHERE ${BaseColumns._ID} = "+
+                "Select * FROM ${DBInfo.TABLE_NAME} WHERE ${BaseColumns._ID} = "+
                         intent.getStringExtra("ID"), null
             )
             if(cursor.count > 0) {
@@ -109,28 +106,30 @@ class AddSubject : AppCompatActivity() {
     }
 
     private fun addSubject(db: SQLiteDatabase, value : ContentValues) {
-        db.insertOrThrow(Subject_DBInfo.TABLE_NAME, null, value)
+        db.insertOrThrow(DBInfo.TABLE_NAME, null, value)
     }
 
     private fun updateSubject(db: SQLiteDatabase, value : ContentValues) {
-        db.update(Subject_DBInfo.TABLE_NAME, value, BaseColumns._ID + "=?",
+        db.update(
+            DBInfo.TABLE_NAME, value, BaseColumns._ID + "=?",
             arrayOf(intent.getStringExtra("ID")))
     }
 
     private fun removeSubject(db: SQLiteDatabase) {
-        db.delete(Subject_DBInfo.TABLE_NAME, BaseColumns._ID + "=?",
+        db.delete(
+            DBInfo.TABLE_NAME, BaseColumns._ID + "=?",
             arrayOf(intent.getStringExtra("ID")))
     }
 
     private fun createContentValue(name : String, shortcut : String, type : String,
                                    location: String, teacher : String, note : String) : ContentValues {
         val contentValue = ContentValues()
-        contentValue.put(Subject_DBInfo.TABLE_COLUMN_NAME, name)
-        contentValue.put(Subject_DBInfo.TABLE_COLUMN_SHORTCUT, shortcut)
-        contentValue.put(Subject_DBInfo.TABLE_COLUMN_TYPE, type)
-        contentValue.put(Subject_DBInfo.TABLE_COLUMN_LOCATION, location)
-        contentValue.put(Subject_DBInfo.TABLE_COLUMN_TEACHER, teacher)
-        contentValue.put(Subject_DBInfo.TABLE_COLUMN_NOTE, note)
+        contentValue.put(DBInfo.TABLE_COLUMN_NAME, name)
+        contentValue.put(DBInfo.TABLE_COLUMN_SHORTCUT, shortcut)
+        contentValue.put(DBInfo.TABLE_COLUMN_TYPE, type)
+        contentValue.put(DBInfo.TABLE_COLUMN_LOCATION, location)
+        contentValue.put(DBInfo.TABLE_COLUMN_TEACHER, teacher)
+        contentValue.put(DBInfo.TABLE_COLUMN_NOTE, note)
         return contentValue
     }
 

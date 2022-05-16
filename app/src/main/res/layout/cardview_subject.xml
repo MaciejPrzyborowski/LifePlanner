@@ -15,7 +15,8 @@
     <TextView
         android:id="@+id/subjectID_Card"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,6 +31,7 @@
             android:layout_height="19dp"
             android:layout_gravity="center"
             android:layout_marginEnd="5dp"
+            android:contentDescription="@string/icon_contentDescription"
             card_view:srcCompat="@drawable/ic_baseline_school_24" />
 
         <TextView
@@ -37,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
-            android:text="Nazwa przedmiotu"
+            android:text="@string/cardview_subjectname"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -47,7 +49,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/roboto"
             android:gravity="end|center_vertical"
-            android:text="Typ przedmiotu"
+            android:text="@string/cardview_subjectType"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -66,14 +68,15 @@
             android:layout_width="19dp"
             android:layout_height="19dp"
             android:layout_gravity="center"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/icon_contentDescription"
             card_view:srcCompat="@drawable/ic_baseline_face_24" />
 
         <TextView
             android:id="@+id/subjectTeacher_Card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nauczyciel"
+            android:text="@string/cardview_subjectTeacher"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -82,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end|center_vertical"
-            android:text="Lokalizacja"
+            android:text="@string/cardview_subjectLocation"
             android:textColor="#000000"
             android:textSize="16sp" />
 

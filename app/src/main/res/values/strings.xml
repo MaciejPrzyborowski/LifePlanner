@@ -22,4 +22,9 @@
     <string name="removeSubjectButton_editText">RemoveSubject</string>
     <string name="subjectEdited_toast">Subject has been edited</string>
     <string name="subjectRemoved_toast">Subject has been removed</string>
+    <string name="icon_contentDescription">Icon</string>
+    <string name="cardview_subjectname">Subject name</string>
+    <string name="cardview_subjectType">Subject type</string>
+    <string name="cardview_subjectTeacher">Teacher</string>
+    <string name="cardview_subjectLocation">Location</string>
 </resources>

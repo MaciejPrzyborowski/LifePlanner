@@ -23,4 +23,9 @@
     <string name="removeSubjectButton_editText">Usuń przedmiot</string>
     <string name="subjectEdited_toast">Przedmiot został zmieniony</string>
     <string name="subjectRemoved_toast">Przedmiot został usunięty</string>
+    <string name="icon_contentDescription">Ikona</string>
+    <string name="cardview_subjectname">Nazwa przedmiotu</string>
+    <string name="cardview_subjectType">Typ przedmiotu</string>
+    <string name="cardview_subjectTeacher">Nauczyciel</string>
+    <string name="cardview_subjectLocation">Lokalizacja</string>
 </resources>
