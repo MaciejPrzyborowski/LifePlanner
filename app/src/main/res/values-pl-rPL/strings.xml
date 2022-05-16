@@ -16,7 +16,7 @@
     <string name="addSubjectShortcut_editText">Skrót*</string>
     <string name="addSubjectTeacher_editText">Nauczyciel</string>
     <string name="addSubjectButton_editText">Dodaj przedmiot</string>
-    <string name="addSubjectNotes_editText">Notatka*</string>
+    <string name="addSubjectNote_editText">Notatka*</string>
     <string name="subjectAdded_toast">Przedmiot został dodany</string>
     <string name="addSubjectError_missing">Nie wprowadzono wymaganych danych</string>
     <string name="editSubjectButton_editText">Edytuj przedmiot</string>
@@ -24,8 +24,26 @@
     <string name="subjectEdited_toast">Przedmiot został zmieniony</string>
     <string name="subjectRemoved_toast">Przedmiot został usunięty</string>
     <string name="icon_contentDescription">Ikona</string>
-    <string name="cardview_subjectname">Nazwa przedmiotu</string>
-    <string name="cardview_subjectType">Typ przedmiotu</string>
-    <string name="cardview_subjectTeacher">Nauczyciel</string>
-    <string name="cardview_subjectLocation">Lokalizacja</string>
+    <string name="cardView_subjectName">Nazwa przedmiotu</string>
+    <string name="cardView_subjectType">Typ przedmiotu</string>
+    <string name="cardView_subjectTeacher">Nauczyciel</string>
+    <string name="cardView_subjectLocation">Lokalizacja</string>
+    <string name="addTeacherTitle">Dodaj nauczyciela</string>
+    <string name="addTeacherName_editText">Imię</string>
+    <string name="addTeacherSurname_editText">Nazwisko</string>
+    <string name="addTeacherDegree_editText">Tytuł naukowy</string>
+    <string name="addTeacherPhone_editText">Telefon*</string>
+    <string name="addTeacherEMail_editText">Adres e-mail*</string>
+    <string name="addTeacherLocation_editText">Numer pokoju*</string>
+    <string name="addTeacherNote_editText">Notatka*</string>
+    <string name="addTeacherButton_editText">Dodaj nauczyciela</string>
+    <string name="editTeacherButton_editText">Edytuj nauczyciela</string>
+    <string name="removeTeacherButton_editText">Usuń nauczyciela</string>
+    <string name="cardView_teacherNameAndSurname">Imię i nazwisko</string>
+    <string name="cardView_teacherDegree">Tytuł naukowy</string>
+    <string name="addTeacherError_missing">Nie wprowadzono wymaganych danych</string>
+    <string name="teacherAdded_toast">Nauczyciel został dodany</string>
+    <string name="teacherEdited_toast">Nauczyciel został zmieniony</string>
+    <string name="teacherRemoved_toast">Nauczyciel został usunięty</string>
+
 </resources>

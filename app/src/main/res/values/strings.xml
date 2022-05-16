@@ -15,7 +15,7 @@
     <string name="addSubjectShortcut_editText">Shortcut*</string>
     <string name="addSubjectTeacher_editText">Teacher</string>
     <string name="addSubjectButton_editText">Add Subject</string>
-    <string name="addSubjectNotes_editText">Note*</string>
+    <string name="addSubjectNote_editText">Note*</string>
     <string name="subjectAdded_toast">Subject has been added</string>
     <string name="addSubjectError_missing">The required data has not been entered</string>
     <string name="editSubjectButton_editText">Edit Subject</string>
@@ -23,8 +23,26 @@
     <string name="subjectEdited_toast">Subject has been edited</string>
     <string name="subjectRemoved_toast">Subject has been removed</string>
     <string name="icon_contentDescription">Icon</string>
-    <string name="cardview_subjectname">Subject name</string>
-    <string name="cardview_subjectType">Subject type</string>
-    <string name="cardview_subjectTeacher">Teacher</string>
-    <string name="cardview_subjectLocation">Location</string>
+    <string name="cardView_subjectName">Subject name</string>
+    <string name="cardView_subjectType">Subject type</string>
+    <string name="cardView_subjectTeacher">Teacher</string>
+    <string name="cardView_subjectLocation">Location</string>
+    <string name="addTeacherTitle">addTeacher</string>
+    <string name="addTeacherName_editText">Name</string>
+    <string name="addTeacherSurname_editText">Surrname</string>
+    <string name="addTeacherPhone_editText">Phone*</string>
+    <string name="addTeacherEMail_editText">E-mail address*</string>
+    <string name="addTeacherLocation_editText">Room number*</string>
+    <string name="addTeacherNote_editText">Note*</string>
+    <string name="addTeacherButton_editText">Add Teacher</string>
+    <string name="addTeacherDegree_editText">Degree</string>
+    <string name="editTeacherButton_editText">Edit Teacher</string>
+    <string name="removeTeacherButton_editText">Remove Teacher</string>
+    <string name="cardView_teacherNameAndSurname">Name and Surname</string>
+    <string name="cardView_teacherDegree">Degree</string>
+    <string name="teacherAdded_toast">Teacher has been added</string>
+    <string name="addTeacherError_missing">The required data has not been entered</string>
+    <string name="teacherEdited_toast">Teacher has been edited</string>
+    <string name="teacherRemoved_toast">Teacher has been removed</string>
+
 </resources>

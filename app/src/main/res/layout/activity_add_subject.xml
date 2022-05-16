@@ -136,7 +136,7 @@
         <EditText
             android:id="@+id/subjectNote"
             style="@style/addSubject_editText"
-            android:hint="@string/addSubjectNotes_editText"
+            android:hint="@string/addSubjectNote_editText"
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
             tools:ignore="TextContrastCheck" />

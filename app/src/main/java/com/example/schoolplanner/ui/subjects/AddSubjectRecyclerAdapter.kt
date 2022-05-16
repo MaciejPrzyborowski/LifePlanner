@@ -13,10 +13,10 @@ import com.example.schoolplanner.R
 
 class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.Adapter<AddSubjectRecyclerAdapter.ViewHolder>() {
     private lateinit var dbID : ArrayList<String>
-    private lateinit var dbsubjectName : ArrayList<String>
-    private lateinit var dbsubjectType : ArrayList<String>
-    private lateinit var dbsubjectLocation : ArrayList<String>
-    private lateinit var dbsubjectTeacher : ArrayList<String>
+    private lateinit var dbName : ArrayList<String>
+    private lateinit var dbType : ArrayList<String>
+    private lateinit var dbLocation : ArrayList<String>
+    private lateinit var dbTeacher : ArrayList<String>
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(viewGroup.context)
@@ -36,7 +36,7 @@ class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.A
         getSubjectInfo()
         setSubjectInfo(viewHolder, position)
 
-        viewHolder.itemView.findViewById<CardView>(R.id.cardView).setOnClickListener {
+        viewHolder.itemView.findViewById<CardView>(R.id.subject_CardView).setOnClickListener {
             val intent = Intent(context, AddSubject::class.java)
             intent.putExtra("ID", viewHolder.subjectID.text.toString())
             context.startActivity(intent)
@@ -45,10 +45,10 @@ class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.A
 
     private fun getSubjectInfo() {
         dbID = ArrayList()
-        dbsubjectName = ArrayList()
-        dbsubjectType = ArrayList()
-        dbsubjectLocation = ArrayList()
-        dbsubjectTeacher = ArrayList()
+        dbName = ArrayList()
+        dbType = ArrayList()
+        dbLocation = ArrayList()
+        dbTeacher = ArrayList()
         val cursor = db.query(
             DBInfo.TABLE_NAME, null, null, null,
             null, null, null)
@@ -57,14 +57,14 @@ class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.A
             while (!cursor.isAfterLast) {
                 dbID.add(cursor.getInt(0).toString())
                 if(cursor.getString(2).isNullOrEmpty()) {
-                    dbsubjectName.add(cursor.getString(1))
+                    dbName.add(cursor.getString(1))
                 }
                 else {
-                    dbsubjectName.add(cursor.getString(2))
+                    dbName.add(cursor.getString(2))
                 }
-                dbsubjectType.add(cursor.getString(3))
-                dbsubjectLocation.add(cursor.getString(4))
-                dbsubjectTeacher.add(cursor.getString(5))
+                dbType.add(cursor.getString(3))
+                dbLocation.add(cursor.getString(4))
+                dbTeacher.add(cursor.getString(5))
                 cursor.moveToNext()
             }
         }
@@ -73,10 +73,10 @@ class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.A
 
     private fun setSubjectInfo(viewHolder: ViewHolder, position: Int) {
         viewHolder.subjectID.text = dbID[position]
-        viewHolder.subjectName.text = dbsubjectName[position]
-        viewHolder.subjectType.text = dbsubjectType[position]
-        viewHolder.subjectLocation.text = dbsubjectLocation[position]
-        viewHolder.subjectTeacher.text = dbsubjectTeacher[position]
+        viewHolder.subjectName.text = dbName[position]
+        viewHolder.subjectType.text = dbType[position]
+        viewHolder.subjectLocation.text = dbLocation[position]
+        viewHolder.subjectTeacher.text = dbTeacher[position]
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView"
+    android:id="@+id/subject_CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/cardview_subjectname"
+            android:text="@string/cardView_subjectName"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -49,7 +49,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/roboto"
             android:gravity="end|center_vertical"
-            android:text="@string/cardview_subjectType"
+            android:text="@string/cardView_subjectType"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -76,7 +76,7 @@
             android:id="@+id/subjectTeacher_Card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cardview_subjectTeacher"
+            android:text="@string/cardView_subjectTeacher"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end|center_vertical"
-            android:text="@string/cardview_subjectLocation"
+            android:text="@string/cardView_subjectLocation"
             android:textColor="#000000"
             android:textSize="16sp" />
 

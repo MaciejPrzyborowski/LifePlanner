@@ -13,6 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.schoolplanner.R
 
 class AddSubject : AppCompatActivity() {
+    private lateinit var nameEditText : EditText
+    private lateinit var shortcutEditText : EditText
+    private lateinit var typeEditText : EditText
+    private lateinit var locationEditText : EditText
+    private lateinit var teacherEditText : EditText
+    private lateinit var noteEditText : EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_subject)
@@ -21,45 +28,18 @@ class AddSubject : AppCompatActivity() {
         val dbHelper = SubjectDBHelper(applicationContext)
         val db = dbHelper.writableDatabase
 
-        val nameEditText = findViewById<EditText>(R.id.subjectName)
-        val shortcutEditText = findViewById<EditText>(R.id.subjectShortcut)
-        val typeEditText = findViewById<EditText>(R.id.subjectType)
-        val locationEditText = findViewById<EditText>(R.id.subjectLocation)
-        val teacherEditText = findViewById<EditText>(R.id.subjectTeacher)
-        val noteEditText = findViewById<EditText>(R.id.subjectNote)
-
-        if(intent.hasExtra("ID")) {
-            findViewById<Button>(R.id.addSubjectButton).visibility = View.GONE
-            findViewById<Button>(R.id.editSubjectButton).visibility = View.VISIBLE
-            findViewById<Button>(R.id.removeSubjectButton).visibility = View.VISIBLE
-
-            val cursor = db.rawQuery(
-                "Select * FROM ${DBInfo.TABLE_NAME} WHERE ${BaseColumns._ID} = "+
-                        intent.getStringExtra("ID"), null
-            )
-            if(cursor.count > 0) {
-                cursor.moveToFirst()
-                nameEditText.setText(cursor.getString(1).toString())
-                shortcutEditText.setText(cursor.getString(2).toString())
-                typeEditText.setText(cursor.getString(3).toString())
-                locationEditText.setText(cursor.getString(4).toString())
-                teacherEditText.setText(cursor.getString(5).toString())
-                noteEditText.setText(cursor.getString(6).toString())
-            }
-        }
+        nameEditText = findViewById(R.id.subjectName)
+        shortcutEditText = findViewById(R.id.subjectShortcut)
+        typeEditText = findViewById(R.id.subjectType)
+        locationEditText = findViewById(R.id.subjectLocation)
+        teacherEditText = findViewById(R.id.subjectTeacher)
+        noteEditText = findViewById(R.id.subjectNote)
+        setVisibilityButton()
+        getData(db)
 
         findViewById<Button>(R.id.addSubjectButton).setOnClickListener {
-            if (!intent.hasExtra("ID") && checkDataSubject(
-                    nameEditText.text.toString(),
-                    typeEditText.text.toString(), teacherEditText.text.toString()
-                )
-            ) {
-                val contentValue = createContentValue(
-                    nameEditText.text.toString(),
-                    shortcutEditText.text.toString(), typeEditText.text.toString(),
-                    locationEditText.text.toString(), teacherEditText.text.toString(),
-                    noteEditText.text.toString()
-                )
+            if (!intent.hasExtra("ID") && checkData()) {
+                val contentValue = createContentValue()
                 addSubject(db, contentValue)
                 Toast.makeText(applicationContext, R.string.subjectAdded_toast, Toast.LENGTH_SHORT).show()
                 onBackPressed()
@@ -69,17 +49,8 @@ class AddSubject : AppCompatActivity() {
             }
         }
         findViewById<Button>(R.id.editSubjectButton).setOnClickListener {
-            if (intent.hasExtra("ID") && checkDataSubject(
-                    nameEditText.text.toString(),
-                    typeEditText.text.toString(), teacherEditText.text.toString()
-                )
-            ) {
-                val contentValue = createContentValue(
-                    nameEditText.text.toString(),
-                    shortcutEditText.text.toString(), typeEditText.text.toString(),
-                    locationEditText.text.toString(), teacherEditText.text.toString(),
-                    noteEditText.text.toString()
-                )
+            if (intent.hasExtra("ID") && checkData()) {
+                val contentValue = createContentValue()
                 updateSubject(db, contentValue)
                 Toast.makeText(applicationContext, R.string.subjectEdited_toast, Toast.LENGTH_SHORT).show()
                 onBackPressed()
@@ -121,20 +92,52 @@ class AddSubject : AppCompatActivity() {
             arrayOf(intent.getStringExtra("ID")))
     }
 
-    private fun createContentValue(name : String, shortcut : String, type : String,
-                                   location: String, teacher : String, note : String) : ContentValues {
+    private fun setVisibilityButton() {
+        if(intent.hasExtra("ID")) {
+            findViewById<Button>(R.id.addSubjectButton).visibility = View.GONE
+            findViewById<Button>(R.id.editSubjectButton).visibility = View.VISIBLE
+            findViewById<Button>(R.id.removeSubjectButton).visibility = View.VISIBLE
+        }
+        else {
+            findViewById<Button>(R.id.addSubjectButton).visibility = View.VISIBLE
+            findViewById<Button>(R.id.editSubjectButton).visibility = View.GONE
+            findViewById<Button>(R.id.removeSubjectButton).visibility = View.GONE
+        }
+    }
+
+    private fun getData(db : SQLiteDatabase) {
+        if(intent.hasExtra("ID")) {
+            val cursor = db.rawQuery(
+                "Select * FROM ${DBInfo.TABLE_NAME} WHERE ${BaseColumns._ID} = "+
+                        intent.getStringExtra("ID"), null
+            )
+            if(cursor.count > 0) {
+                cursor.moveToFirst()
+                nameEditText.setText(cursor.getString(1).toString())
+                shortcutEditText.setText(cursor.getString(2).toString())
+                typeEditText.setText(cursor.getString(3).toString())
+                locationEditText.setText(cursor.getString(4).toString())
+                teacherEditText.setText(cursor.getString(5).toString())
+                noteEditText.setText(cursor.getString(6).toString())
+            }
+            cursor.close()
+        }
+    }
+
+    private fun createContentValue() : ContentValues {
         val contentValue = ContentValues()
-        contentValue.put(DBInfo.TABLE_COLUMN_NAME, name)
-        contentValue.put(DBInfo.TABLE_COLUMN_SHORTCUT, shortcut)
-        contentValue.put(DBInfo.TABLE_COLUMN_TYPE, type)
-        contentValue.put(DBInfo.TABLE_COLUMN_LOCATION, location)
-        contentValue.put(DBInfo.TABLE_COLUMN_TEACHER, teacher)
-        contentValue.put(DBInfo.TABLE_COLUMN_NOTE, note)
+        contentValue.put(DBInfo.TABLE_COLUMN_NAME, nameEditText.text.toString())
+        contentValue.put(DBInfo.TABLE_COLUMN_SHORTCUT, shortcutEditText.text.toString())
+        contentValue.put(DBInfo.TABLE_COLUMN_TYPE, typeEditText.text.toString())
+        contentValue.put(DBInfo.TABLE_COLUMN_LOCATION, locationEditText.text.toString())
+        contentValue.put(DBInfo.TABLE_COLUMN_TEACHER, teacherEditText.text.toString())
+        contentValue.put(DBInfo.TABLE_COLUMN_NOTE, noteEditText.text.toString())
         return contentValue
     }
 
-    private fun checkDataSubject(name : String, type : String, teacher: String) : Boolean {
-        if(!name.isNullOrEmpty() && !type.isNullOrEmpty() && !teacher.isNullOrEmpty()) {
+    private fun checkData() : Boolean {
+        if(nameEditText.text.toString().isNotEmpty() && typeEditText.text.toString().isNotEmpty() &&
+            teacherEditText.text.toString().isNotEmpty()) {
             return true
         }
         return false
