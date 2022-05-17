@@ -45,5 +45,18 @@
     <string name="teacherAdded_toast">Nauczyciel został dodany</string>
     <string name="teacherEdited_toast">Nauczyciel został zmieniony</string>
     <string name="teacherRemoved_toast">Nauczyciel został usunięty</string>
-
+    <string name="weather_city_menu">Miejscowość</string>
+    <string name="weather_updated_date">Zaktualizowano:</string>
+    <string name="weather_weather_menu">Pogoda</string>
+    <string name="weather_temperature_menu">0°C</string>
+    <string name="weather_pressure_menu">Ciśnienie</string>
+    <string name="weather_sunrise_menu">Wschód słońca</string>
+    <string name="weather_sunset_menu">Zachód słońca</string>
+    <string name="weather_wind_menu">Wiatr</string>
+    <string name="weather_humidity_menu">Wilgotność</string>
+    <string name="weather_value_menu">Wartość</string>
+    <string name="weather_hour_menu">Godzina</string>
+    <string name="menu_weather">Pogoda</string>
+    <string name="weather_feelTemperature_menu">Odczuwalna: 0°C</string>
+    <string name="weather_error">Brak połączenia z interentem</string>
 </resources>

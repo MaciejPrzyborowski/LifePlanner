@@ -27,7 +27,7 @@
     <string name="cardView_subjectType">Subject type</string>
     <string name="cardView_subjectTeacher">Teacher</string>
     <string name="cardView_subjectLocation">Location</string>
-    <string name="addTeacherTitle">addTeacher</string>
+    <string name="addTeacherTitle">Add Teacher</string>
     <string name="addTeacherName_editText">Name</string>
     <string name="addTeacherSurname_editText">Surrname</string>
     <string name="addTeacherPhone_editText">Phone*</string>
@@ -44,5 +44,19 @@
     <string name="addTeacherError_missing">The required data has not been entered</string>
     <string name="teacherEdited_toast">Teacher has been edited</string>
     <string name="teacherRemoved_toast">Teacher has been removed</string>
-
+    <string name="weather_city_menu">City</string>
+    <string name="weather_updated_date">Updated at:</string>
+    <string name="weather_weather_menu">Weather</string>
+    <string name="weather_temperature_menu">0°C</string>
+    <string name="weather_sunrise_menu">Sunrise</string>
+    <string name="weather_sunset_menu">Sunset</string>
+    <string name="weather_wind_menu">Wind</string>
+    <string name="weather_pressure_menu">Pressure</string>
+    <string name="weather_humidity_menu">Humidity</string>
+    <string name="weather_value_menu">Value</string>
+    <string name="weather_hour_menu">Hour</string>
+    <string name="menu_weather">Weather</string>
+    <string name="weather_feelTemperature_menu">RealFeel: 0°C</string>
+    <string name="weather_error">No internet connection</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>
