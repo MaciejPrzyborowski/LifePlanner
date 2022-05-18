@@ -58,5 +58,6 @@
     <string name="menu_weather">Weather</string>
     <string name="weather_feelTemperature_menu">RealFeel: 0°C</string>
     <string name="weather_error">No internet connection</string>
+    <string name="weather_loadingData_menu">Loading data...</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

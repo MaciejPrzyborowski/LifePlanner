@@ -59,4 +59,5 @@
     <string name="menu_weather">Pogoda</string>
     <string name="weather_feelTemperature_menu">Odczuwalna: 0°C</string>
     <string name="weather_error">Brak połączenia z interentem</string>
+    <string name="weather_loadingData_menu">Wczytywanie danych...</string>
 </resources>
