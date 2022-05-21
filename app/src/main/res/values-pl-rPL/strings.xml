@@ -58,6 +58,15 @@
     <string name="weather_hour_menu">Godzina</string>
     <string name="menu_weather">Pogoda</string>
     <string name="weather_feelTemperature_menu">Odczuwalna: 0°C</string>
-    <string name="weather_error">Brak połączenia z interentem</string>
+    <string name="weather_error">Wystąpił błąd podczas uzyskiwania lokalizacji</string>
     <string name="weather_loadingData_menu">Wczytywanie danych...</string>
+    <string name="addTask_title">Tytuł wydarzenia</string>
+    <string name="addTask_desc">Opis wydarzenia</string>
+    <string name="addTask_date">Data wydarzenia</string>
+    <string name="addTask_time">Godzina wydarzenia</string>
+    <string name="addTask_menu">Dodaj wydarzenie</string>
+    <string name="addTask_title_hint">Tytuł</string>
+    <string name="addTask_desc_hint">Opis</string>
+    <string name="addTask_date_hint">Data</string>
+    <string name="addTask_time_hint">Godzina</string>
 </resources>

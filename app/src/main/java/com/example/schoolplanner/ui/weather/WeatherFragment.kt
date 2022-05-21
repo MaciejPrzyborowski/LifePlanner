@@ -10,7 +10,6 @@ import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,14 +47,17 @@ class WeatherFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentWeatherBinding.inflate(inflater, container, false)
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity().applicationContext)
+        binding.refresh.setOnClickListener {
+            getLocation()
+        }
         getLocation()
         return binding.root
     }
 
     @SuppressLint("MissingPermission")
     private fun getLocation() {
+        setVisibilityLayout(-1)
         activity?.let {
             if(hasPermissions(activity as Context, PERMISSIONS)) {
                 mFusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
@@ -66,8 +68,11 @@ class WeatherFragment : Fragment() {
                         getWeather(list[0].locality.toString(), list[0].countryCode.toString())
                     }
                     else {
-                        Log.d("Location", "error 1")
+                        setVisibilityLayout(0)
                     }
+                }
+                mFusedLocationClient.lastLocation.addOnFailureListener(requireActivity()) {
+                    setVisibilityLayout(0)
                 }
             }
             else {
@@ -87,16 +92,17 @@ class WeatherFragment : Fragment() {
         if(granted) {
             getLocation()
         }
+        else {
+            setVisibilityLayout(0)
+        }
     }
 
     @SuppressLint("SetTextI18n", "SimpleDateFormat")
     private fun getWeather(cityName : String, countryCode : String) {
-        val units = "metric"
-        val keyAPI = "ad3e0e8a748a956db26f4cb39403848c"
         var response: String?
 
         myExecutor.execute {
-            response = getAPI(cityName, countryCode, units, keyAPI, countryCode)
+            response = getAPI(cityName, countryCode, countryCode)
             myHandler.post {
                 try {
                     val jsonObject = JSONObject(response.toString())
@@ -138,14 +144,16 @@ class WeatherFragment : Fragment() {
                     setVisibilityLayout(1)
                 }
                 catch (e: Exception) {
-                    setVisibilityLayout(-1)
+                    setVisibilityLayout(0)
                 }
             }
         }
     }
 
-    private fun getAPI(cityName: String, countryCode: String, units : String, keyAPI : String, lang : String) : String? {
-        var response = try {
+    private fun getAPI(cityName: String, countryCode: String, lang : String) : String? {
+        val units = "metric"
+        val keyAPI = "ad3e0e8a748a956db26f4cb39403848c"
+        val response = try {
             URL("https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&units=${units}&appid=${keyAPI}&lang=${lang}").readText(
                 Charsets.UTF_8
             )
@@ -160,15 +168,18 @@ class WeatherFragment : Fragment() {
         when (status) {
             0 -> {
                 binding.infoOK.visibility = View.GONE
+                binding.infoWait.visibility = View.GONE
                 binding.infoError.visibility = View.VISIBLE
             }
             1 -> {
                 binding.infoOK.visibility = View.VISIBLE
+                binding.infoWait.visibility = View.GONE
                 binding.infoError.visibility = View.GONE
             }
             else -> {
                 binding.infoOK.visibility = View.GONE
-                binding.infoError.visibility = View.VISIBLE
+                binding.infoWait.visibility = View.VISIBLE
+                binding.infoError.visibility = View.GONE
             }
         }
     }

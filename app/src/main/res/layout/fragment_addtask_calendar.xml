@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/addTask_menu"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="3dp"
+            android:textColor="@android:color/black"
+            android:text="@string/addTask_title" />
+
+        <EditText
+            android:id="@+id/addTaskTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/addTask_title_hint"
+            android:background="@drawable/btn_border"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="3dp"
+            android:textColor="@android:color/black"
+            android:text="@string/addTask_desc" />
+
+        <EditText
+            android:id="@+id/addTaskDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_border"
+            android:hint="@string/addTask_desc_hint"
+            android:importantForAutofill="no"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="3dp"
+            android:textColor="@android:color/black"
+            android:text="@string/addTask_date" />
+
+        <EditText
+            android:id="@+id/addTaskDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_border"
+            android:hint="@string/addTask_date_hint"
+            android:importantForAutofill="no"
+            android:inputType="none"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textSize="14sp"
+            tools:ignore="TextFields" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="3dp"
+            android:textColor="@android:color/black"
+            android:text="@string/addTask_time" />
+
+        <EditText
+            android:id="@+id/addTaskTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_border"
+            android:hint="@string/addTask_time_hint"
+            android:importantForAutofill="no"
+            android:inputType="none"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/addTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_background"
+            android:text="@string/addTask_menu"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+    </LinearLayout>
+</ScrollView>

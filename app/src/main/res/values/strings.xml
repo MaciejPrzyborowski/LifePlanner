@@ -57,7 +57,15 @@
     <string name="weather_hour_menu">Hour</string>
     <string name="menu_weather">Weather</string>
     <string name="weather_feelTemperature_menu">RealFeel: 0°C</string>
-    <string name="weather_error">No internet connection</string>
+    <string name="weather_error">There was an error getting the location</string>
     <string name="weather_loadingData_menu">Loading data...</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="addTask_title">Task title</string>
+    <string name="addTask_desc">Task description</string>
+    <string name="addTask_date">Task date</string>
+    <string name="addTask_time">Task time</string>
+    <string name="addTask_menu">Add task</string>
+    <string name="addTask_title_hint">Title</string>
+    <string name="addTask_desc_hint">Description</string>
+    <string name="addTask_date_hint">Date</string>
+    <string name="addTask_time_hint">Time</string>
 </resources>
