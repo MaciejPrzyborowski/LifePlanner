@@ -6,6 +6,7 @@
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/drawable-v24/gradient_bg.xml" value="0.3365" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/drawable/btn_background.xml" value="0.2585" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/drawable/btn_border.xml" value="0.1525" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/drawable/dot.xml" value="0.1" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.305" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.305" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.301" />
@@ -20,7 +21,7 @@
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/content_main.xml" value="0.2962962962962963" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_add_subject.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_addtask_calendar.xml" value="0.34629629629629627" />
-        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_calendar_view.xml" value="0.29074074074074074" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_calendar_view.xml" value="0.1" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_currency.xml" value="0.2962962962962963" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_events.xml" value="0.34406085430076067" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_home.xml" value="0.14722222222222223" />

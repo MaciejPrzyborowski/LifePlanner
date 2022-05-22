@@ -65,7 +65,7 @@ class EventsRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.Adapt
 
     private fun setEventsInfo(viewHolder: ViewHolder, position: Int) {
         var date = inputDateFormat.parse(dbDate[position])
-        var outputDateString = dateFormat.format(date)
+        var outputDateString = dateFormat.format(date!!)
 
         val items1 = outputDateString.split(" ")
         viewHolder.eventDay.text = items1[0]

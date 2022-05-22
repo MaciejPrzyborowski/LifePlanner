@@ -36,8 +36,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21"
     implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.applandeo:material-calendar-view:1.9.0-rc03'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

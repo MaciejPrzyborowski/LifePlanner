@@ -15,6 +15,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.applandeo.materialcalendarview.EventDay
+import com.example.schoolplanner.R
 import com.example.schoolplanner.databinding.FragmentAddtaskCalendarBinding
 import com.example.schoolplanner.databinding.FragmentCalendarViewBinding
 import com.example.schoolplanner.databinding.FragmentEventsBinding
@@ -33,6 +35,8 @@ class EventsFragment : Fragment() {
     private var _calendarBinding: FragmentCalendarViewBinding? = null
     private val calendarBinding get() = _calendarBinding!!
 
+    private lateinit var dbDate : ArrayList<String>
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,6 +48,7 @@ class EventsFragment : Fragment() {
 
         val dbHelper = EventsDBHelper(requireContext())
         val db = dbHelper.writableDatabase
+        calendarBinding.calendarView.setEvents(getHighlitedDays(db))
 
         binding.calendarMenu.setOnClickListener {
             val dialog = BottomSheetDialog(requireContext())
@@ -90,6 +95,36 @@ class EventsFragment : Fragment() {
         }
         return binding.root
     }
+
+    private fun getHighlitedDays(db: SQLiteDatabase): MutableList<EventDay> {
+        val events: MutableList<EventDay> = ArrayList()
+        dbDate = ArrayList()
+
+        val cursor = db.query(
+            DBInfo.TABLE_NAME, null, null, null,
+            null, null, null)
+        if(cursor.count > 0) {
+            cursor.moveToFirst()
+            while (!cursor.isAfterLast) {
+                dbDate.add(cursor.getString(3))
+                cursor.moveToNext()
+            }
+        }
+
+        for (data in dbDate) {
+            val calendar = java.util.Calendar.getInstance()
+            val items1: List<String> = data.split(".")
+            val dd = items1[0]
+            val month = items1[1]
+            val year = items1[2]
+            calendar[java.util.Calendar.DAY_OF_MONTH] = dd.toInt()
+            calendar[java.util.Calendar.MONTH] = month.toInt() - 1
+            calendar[java.util.Calendar.YEAR] = year.toInt()
+            events.add(EventDay(calendar, R.drawable.dot))
+        }
+        return events
+    }
+
 
     private fun checkData(title : String, desc : String, date : String, time : String): Boolean {
         if(title.isNotEmpty() && desc.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty()) {
