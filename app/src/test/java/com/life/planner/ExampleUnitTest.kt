@@ -1,4 +1,4 @@
-package com.example.schoolplanner
+package com.life.planner
 
 import org.junit.Test
 

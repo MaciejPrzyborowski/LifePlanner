@@ -1,4 +1,4 @@
-package com.example.schoolplanner.ui.subjects
+package com.life.planner.ui.subjects
 
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
@@ -10,15 +10,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.schoolplanner.R
+import com.life.planner.R
 
 class AddSubject : AppCompatActivity() {
-    private lateinit var nameEditText : EditText
-    private lateinit var shortcutEditText : EditText
-    private lateinit var typeEditText : EditText
-    private lateinit var locationEditText : EditText
-    private lateinit var teacherEditText : EditText
-    private lateinit var noteEditText : EditText
+    private lateinit var nameEditText: EditText
+    private lateinit var shortcutEditText: EditText
+    private lateinit var typeEditText: EditText
+    private lateinit var locationEditText: EditText
+    private lateinit var teacherEditText: EditText
+    private lateinit var noteEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,27 +41,36 @@ class AddSubject : AppCompatActivity() {
             if (!intent.hasExtra("ID") && checkData()) {
                 val contentValue = createContentValue()
                 addSubject(db, contentValue)
-                Toast.makeText(applicationContext, R.string.subjectAdded_toast, Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, R.string.subjectAdded_toast, Toast.LENGTH_SHORT)
+                    .show()
                 onBackPressed()
-            }
-            else {
-                Toast.makeText(applicationContext, R.string.addSubjectError_missing, Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    R.string.addSubjectError_missing,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         findViewById<Button>(R.id.editSubjectButton).setOnClickListener {
             if (intent.hasExtra("ID") && checkData()) {
                 val contentValue = createContentValue()
                 updateSubject(db, contentValue)
-                Toast.makeText(applicationContext, R.string.subjectEdited_toast, Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, R.string.subjectEdited_toast, Toast.LENGTH_SHORT)
+                    .show()
                 onBackPressed()
-            }
-            else {
-                Toast.makeText(applicationContext, R.string.addSubjectError_missing, Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    R.string.addSubjectError_missing,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         findViewById<Button>(R.id.removeSubjectButton).setOnClickListener {
             removeSubject(db)
-            Toast.makeText(applicationContext, R.string.subjectRemoved_toast, Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, R.string.subjectRemoved_toast, Toast.LENGTH_SHORT)
+                .show()
             onBackPressed()
         }
     }
@@ -76,42 +85,43 @@ class AddSubject : AppCompatActivity() {
         }
     }
 
-    private fun addSubject(db: SQLiteDatabase, value : ContentValues) {
+    private fun addSubject(db: SQLiteDatabase, value: ContentValues) {
         db.insertOrThrow(DBInfo.TABLE_NAME, null, value)
     }
 
-    private fun updateSubject(db: SQLiteDatabase, value : ContentValues) {
+    private fun updateSubject(db: SQLiteDatabase, value: ContentValues) {
         db.update(
             DBInfo.TABLE_NAME, value, BaseColumns._ID + "=?",
-            arrayOf(intent.getStringExtra("ID")))
+            arrayOf(intent.getStringExtra("ID"))
+        )
     }
 
     private fun removeSubject(db: SQLiteDatabase) {
         db.delete(
             DBInfo.TABLE_NAME, BaseColumns._ID + "=?",
-            arrayOf(intent.getStringExtra("ID")))
+            arrayOf(intent.getStringExtra("ID"))
+        )
     }
 
     private fun setVisibilityButton() {
-        if(intent.hasExtra("ID")) {
+        if (intent.hasExtra("ID")) {
             findViewById<Button>(R.id.addSubjectButton).visibility = View.GONE
             findViewById<Button>(R.id.editSubjectButton).visibility = View.VISIBLE
             findViewById<Button>(R.id.removeSubjectButton).visibility = View.VISIBLE
-        }
-        else {
+        } else {
             findViewById<Button>(R.id.addSubjectButton).visibility = View.VISIBLE
             findViewById<Button>(R.id.editSubjectButton).visibility = View.GONE
             findViewById<Button>(R.id.removeSubjectButton).visibility = View.GONE
         }
     }
 
-    private fun getData(db : SQLiteDatabase) {
-        if(intent.hasExtra("ID")) {
+    private fun getData(db: SQLiteDatabase) {
+        if (intent.hasExtra("ID")) {
             val cursor = db.rawQuery(
-                "Select * FROM ${DBInfo.TABLE_NAME} WHERE ${BaseColumns._ID} = "+
+                "Select * FROM ${DBInfo.TABLE_NAME} WHERE ${BaseColumns._ID} = " +
                         intent.getStringExtra("ID"), null
             )
-            if(cursor.count > 0) {
+            if (cursor.count > 0) {
                 cursor.moveToFirst()
                 nameEditText.setText(cursor.getString(1).toString())
                 shortcutEditText.setText(cursor.getString(2).toString())
@@ -124,7 +134,7 @@ class AddSubject : AppCompatActivity() {
         }
     }
 
-    private fun createContentValue() : ContentValues {
+    private fun createContentValue(): ContentValues {
         val contentValue = ContentValues()
         contentValue.put(DBInfo.TABLE_COLUMN_NAME, nameEditText.text.toString())
         contentValue.put(DBInfo.TABLE_COLUMN_SHORTCUT, shortcutEditText.text.toString())
@@ -135,9 +145,11 @@ class AddSubject : AppCompatActivity() {
         return contentValue
     }
 
-    private fun checkData() : Boolean {
-        if(nameEditText.text.toString().isNotEmpty() && typeEditText.text.toString().isNotEmpty() &&
-            teacherEditText.text.toString().isNotEmpty()) {
+    private fun checkData(): Boolean {
+        if (nameEditText.text.toString().isNotEmpty() && typeEditText.text.toString()
+                .isNotEmpty() &&
+            teacherEditText.text.toString().isNotEmpty()
+        ) {
             return true
         }
         return false

@@ -23,7 +23,6 @@
     <string name="cardView_subjectType">Subject type</string>
     <string name="cardView_subjectTeacher">Teacher</string>
     <string name="cardView_subjectLocation">Location</string>
-    <string name="addTeacherTitle">Add Teacher</string>
     <string name="weather_city_menu">City</string>
     <string name="weather_updated_date">Updated at:</string>
     <string name="weather_weather_menu">Weather</string>
@@ -38,7 +37,7 @@
     <string name="menu_weather">Weather</string>
     <string name="weather_feelTemperature_menu">RealFeel: 0°C</string>
     <string name="weather_error">There was an error getting the location</string>
-    <string name="weather_loadingData_menu">Loading data...</string>
+    <string name="weather_loadingData_menu">Loading data…</string>
     <string name="addTask_title">Task title</string>
     <string name="addTask_desc">Task description</string>
     <string name="addTask_date">Task date</string>

@@ -1,4 +1,4 @@
-package com.example.schoolplanner.ui.events
+package com.life.planner.ui.events
 
 import android.database.sqlite.SQLiteDatabase
 import android.view.LayoutInflater
@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schoolplanner.R
+import com.life.planner.R
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class EventsRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.Adapter<EventsRecyclerAdapter.ViewHolder>() {
-    private lateinit var dbID : ArrayList<String>
-    private lateinit var dbTitle : ArrayList<String>
-    private lateinit var dbDesc : ArrayList<String>
-    private lateinit var dbDate : ArrayList<String>
-    private lateinit var dbTime : ArrayList<String>
+class EventsRecyclerAdapter(private val db: SQLiteDatabase) :
+    RecyclerView.Adapter<EventsRecyclerAdapter.ViewHolder>() {
+    private lateinit var dbID: ArrayList<String>
+    private lateinit var dbTitle: ArrayList<String>
+    private lateinit var dbDesc: ArrayList<String>
+    private lateinit var dbDate: ArrayList<String>
+    private lateinit var dbTime: ArrayList<String>
     private var dateFormat = SimpleDateFormat("EE dd MMM yyyy", Locale.getDefault())
     private var inputDateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
 
@@ -28,7 +29,7 @@ class EventsRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.Adapt
     }
 
     override fun getItemCount(): Int {
-        val cursor = db.query(DBInfo.TABLE_NAME, null,null, null,null, null, null)
+        val cursor = db.query(DBInfo.TABLE_NAME, null, null, null, null, null, null)
         val cursorCount = cursor.count
         cursor.close()
         return cursorCount
@@ -48,8 +49,9 @@ class EventsRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.Adapt
 
         val cursor = db.query(
             DBInfo.TABLE_NAME, null, null, null,
-            null, null, null)
-        if(cursor.count > 0) {
+            null, null, null
+        )
+        if (cursor.count > 0) {
             cursor.moveToFirst()
             while (!cursor.isAfterLast) {
                 dbID.add(cursor.getInt(0).toString())
@@ -64,8 +66,8 @@ class EventsRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.Adapt
     }
 
     private fun setEventsInfo(viewHolder: ViewHolder, position: Int) {
-        var date = inputDateFormat.parse(dbDate[position])
-        var outputDateString = dateFormat.format(date!!)
+        val date = inputDateFormat.parse(dbDate[position])
+        val outputDateString = dateFormat.format(date!!)
 
         val items1 = outputDateString.split(" ")
         viewHolder.eventDay.text = items1[0]

@@ -1,16 +1,16 @@
-package com.example.schoolplanner
+package com.life.planner
 
 import android.os.Bundle
 import android.view.Menu
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import com.example.schoolplanner.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
+import com.life.planner.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,11 +1,11 @@
-package com.example.schoolplanner.ui.notes
+package com.life.planner.ui.notes
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.schoolplanner.databinding.FragmentNotesBinding
+import com.life.planner.databinding.FragmentNotesBinding
 
 class NotesFragment : Fragment() {
 

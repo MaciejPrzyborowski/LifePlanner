@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_subjects"
-        android:name="com.example.schoolplanner.ui.subjects.SubjectsFragment"
+        android:name="com.life.planner.ui.subjects.SubjectsFragment"
         android:label="@string/menu_subjects"
         tools:layout="@layout/fragment_subjects" />
 
     <fragment
         android:id="@+id/nav_events"
-        android:name="com.example.schoolplanner.ui.events.EventsFragment"
+        android:name="com.life.planner.ui.events.EventsFragment"
         android:label="@string/menu_events"
         tools:layout="@layout/fragment_events" />
 
     <fragment
         android:id="@+id/nav_notes"
-        android:name="com.example.schoolplanner.ui.notes.NotesFragment"
+        android:name="com.life.planner.ui.notes.NotesFragment"
         android:label="@string/menu_notes"
         tools:layout="@layout/fragment_notes" />
 
     <fragment
         android:id="@+id/nav_weather"
-        android:name="com.example.schoolplanner.ui.weather.WeatherFragment"
+        android:name="com.life.planner.ui.weather.WeatherFragment"
         android:label="@string/menu_weather"
         tools:layout="@layout/fragment_weather" />
 

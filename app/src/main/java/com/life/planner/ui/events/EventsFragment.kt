@@ -1,4 +1,4 @@
-package com.example.schoolplanner.ui.events
+package com.life.planner.ui.events
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -16,11 +16,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.applandeo.materialcalendarview.EventDay
-import com.example.schoolplanner.R
-import com.example.schoolplanner.databinding.FragmentAddtaskCalendarBinding
-import com.example.schoolplanner.databinding.FragmentCalendarViewBinding
-import com.example.schoolplanner.databinding.FragmentEventsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.life.planner.R
+import com.life.planner.databinding.FragmentAddtaskCalendarBinding
+import com.life.planner.databinding.FragmentCalendarViewBinding
+import com.life.planner.databinding.FragmentEventsBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,7 +35,7 @@ class EventsFragment : Fragment() {
     private var _calendarBinding: FragmentCalendarViewBinding? = null
     private val calendarBinding get() = _calendarBinding!!
 
-    private lateinit var dbDate : ArrayList<String>
+    private lateinit var dbDate: ArrayList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,28 +68,50 @@ class EventsFragment : Fragment() {
 
             addTaskDate.setOnClickListener {
                 val calendar = Calendar.getInstance()
-                val datePickerDialog = DatePickerDialog(requireContext(), addDateSetListener(calendar, addTaskDate),
-                    calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+                val datePickerDialog = DatePickerDialog(
+                    requireContext(),
+                    addDateSetListener(calendar, addTaskDate),
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)
+                )
                 datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
                 datePickerDialog.show()
             }
 
             addTaskTime.setOnClickListener {
                 val calendar = Calendar.getInstance()
-                val timePickerDialog = TimePickerDialog(requireContext(), addTimeSetListener(calendar, addTaskTime),
-                    calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true)
+                val timePickerDialog = TimePickerDialog(
+                    requireContext(), addTimeSetListener(calendar, addTaskTime),
+                    calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true
+                )
                 timePickerDialog.show()
             }
 
             addTaskButton.setOnClickListener {
-                if(checkData(addTaskTitle.text.toString(), addTaskDesc.text.toString(), addTaskDate.text.toString(), addTaskTime.text.toString()))
-                {
-                    addTask(db, createContentValue(addTaskTitle.text.toString(), addTaskDesc.text.toString(), addTaskDate.text.toString(), addTaskTime.text.toString()))
+                if (checkData(
+                        addTaskTitle.text.toString(),
+                        addTaskDesc.text.toString(),
+                        addTaskDate.text.toString(),
+                        addTaskTime.text.toString()
+                    )
+                ) {
+                    addTask(
+                        db,
+                        createContentValue(
+                            addTaskTitle.text.toString(),
+                            addTaskDesc.text.toString(),
+                            addTaskDate.text.toString(),
+                            addTaskTime.text.toString()
+                        )
+                    )
                     dialog.dismiss()
-                }
-                else
-                {
-                    Toast.makeText(requireContext(), "Nie wprowadzono wszystkich danych", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Nie wprowadzono wszystkich danych",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -102,14 +124,16 @@ class EventsFragment : Fragment() {
 
         val cursor = db.query(
             DBInfo.TABLE_NAME, null, null, null,
-            null, null, null)
-        if(cursor.count > 0) {
+            null, null, null
+        )
+        if (cursor.count > 0) {
             cursor.moveToFirst()
             while (!cursor.isAfterLast) {
                 dbDate.add(cursor.getString(3))
                 cursor.moveToNext()
             }
         }
+        cursor.close()
 
         for (data in dbDate) {
             val calendar = java.util.Calendar.getInstance()
@@ -126,18 +150,23 @@ class EventsFragment : Fragment() {
     }
 
 
-    private fun checkData(title : String, desc : String, date : String, time : String): Boolean {
-        if(title.isNotEmpty() && desc.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty()) {
+    private fun checkData(title: String, desc: String, date: String, time: String): Boolean {
+        if (title.isNotEmpty() && desc.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty()) {
             return true
         }
         return false
     }
 
-    private fun addTask(db: SQLiteDatabase, value : ContentValues) {
+    private fun addTask(db: SQLiteDatabase, value: ContentValues) {
         db.insertOrThrow(DBInfo.TABLE_NAME, null, value)
     }
 
-    private fun createContentValue(title : String, desc : String, date : String, time : String) : ContentValues {
+    private fun createContentValue(
+        title: String,
+        desc: String,
+        date: String,
+        time: String
+    ): ContentValues {
         val contentValue = ContentValues()
         contentValue.put(DBInfo.TABLE_COLUMN_TITLE, title)
         contentValue.put(DBInfo.TABLE_COLUMN_DESC, desc)
@@ -146,7 +175,7 @@ class EventsFragment : Fragment() {
         return contentValue
     }
 
-    private fun addDateSetListener(calendar: Calendar, text: EditText) : OnDateSetListener {
+    private fun addDateSetListener(calendar: Calendar, text: EditText): OnDateSetListener {
         val dateSetListener = OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, monthOfYear)
@@ -157,7 +186,10 @@ class EventsFragment : Fragment() {
         return dateSetListener
     }
 
-    private fun addTimeSetListener(calendar: Calendar, text: EditText) : TimePickerDialog.OnTimeSetListener {
+    private fun addTimeSetListener(
+        calendar: Calendar,
+        text: EditText
+    ): TimePickerDialog.OnTimeSetListener {
         val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
@@ -180,6 +212,7 @@ class EventsFragment : Fragment() {
         super.onResume()
         binding.taskRecyclerMenu.adapter?.notifyDataSetChanged()
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

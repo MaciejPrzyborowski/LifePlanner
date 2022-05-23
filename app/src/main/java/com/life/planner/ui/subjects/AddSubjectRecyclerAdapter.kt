@@ -1,4 +1,4 @@
-package com.example.schoolplanner.ui.subjects
+package com.life.planner.ui.subjects
 
 import android.content.Context
 import android.content.Intent
@@ -9,14 +9,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schoolplanner.R
+import com.life.planner.R
 
-class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.Adapter<AddSubjectRecyclerAdapter.ViewHolder>() {
-    private lateinit var dbID : ArrayList<String>
-    private lateinit var dbName : ArrayList<String>
-    private lateinit var dbType : ArrayList<String>
-    private lateinit var dbLocation : ArrayList<String>
-    private lateinit var dbTeacher : ArrayList<String>
+class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) :
+    RecyclerView.Adapter<AddSubjectRecyclerAdapter.ViewHolder>() {
+    private lateinit var dbID: ArrayList<String>
+    private lateinit var dbName: ArrayList<String>
+    private lateinit var dbType: ArrayList<String>
+    private lateinit var dbLocation: ArrayList<String>
+    private lateinit var dbTeacher: ArrayList<String>
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(viewGroup.context)
@@ -25,14 +26,14 @@ class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.A
     }
 
     override fun getItemCount(): Int {
-        val cursor = db.query(DBInfo.TABLE_NAME, null,null, null,null, null, null)
+        val cursor = db.query(DBInfo.TABLE_NAME, null, null, null, null, null, null)
         val cursorCount = cursor.count
         cursor.close()
         return cursorCount
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val context : Context = viewHolder.itemView.context
+        val context: Context = viewHolder.itemView.context
         getSubjectInfo()
         setSubjectInfo(viewHolder, position)
 
@@ -51,15 +52,15 @@ class AddSubjectRecyclerAdapter(private val db: SQLiteDatabase) : RecyclerView.A
         dbTeacher = ArrayList()
         val cursor = db.query(
             DBInfo.TABLE_NAME, null, null, null,
-            null, null, null)
-        if(cursor.count > 0) {
+            null, null, null
+        )
+        if (cursor.count > 0) {
             cursor.moveToFirst()
             while (!cursor.isAfterLast) {
                 dbID.add(cursor.getInt(0).toString())
-                if(cursor.getString(2).isNullOrEmpty()) {
+                if (cursor.getString(2).isNullOrEmpty()) {
                     dbName.add(cursor.getString(1))
-                }
-                else {
+                } else {
                     dbName.add(cursor.getString(2))
                 }
                 dbType.add(cursor.getString(3))

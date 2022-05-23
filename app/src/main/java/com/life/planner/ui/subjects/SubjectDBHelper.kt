@@ -1,11 +1,11 @@
-package com.example.schoolplanner.ui.subjects
+package com.life.planner.ui.subjects
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
 
-object DBInfo: BaseColumns {
+object DBInfo : BaseColumns {
     const val TABLE_NAME = "Subjects"
     const val TABLE_COLUMN_NAME = "Name"
     const val TABLE_COLUMN_SHORTCUT = "Shortcut"
