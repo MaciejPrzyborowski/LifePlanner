@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SchoolPlaner</string>
-    <string name="navigation_drawer_open">Otwórz panel nawigacji</string>
-    <string name="navigation_drawer_close">Zamknij panel nawigacji</string>
     <string name="action_settings">Ustawienia</string>
     <string name="menu_subjects">Przedmioty</string>
-    <string name="menu_marks">Oceny</string>
-    <string name="menu_teachers">Nauczyciele</string>
     <string name="menu_events">Wydarzenia</string>
     <string name="menu_notes">Notatki</string>
     <string name="addSubjectTitle">Dodaj przedmiot</string>
@@ -29,22 +25,6 @@
     <string name="cardView_subjectTeacher">Nauczyciel</string>
     <string name="cardView_subjectLocation">Lokalizacja</string>
     <string name="addTeacherTitle">Dodaj nauczyciela</string>
-    <string name="addTeacherName_editText">Imię</string>
-    <string name="addTeacherSurname_editText">Nazwisko</string>
-    <string name="addTeacherDegree_editText">Tytuł naukowy</string>
-    <string name="addTeacherPhone_editText">Telefon*</string>
-    <string name="addTeacherEMail_editText">Adres e-mail*</string>
-    <string name="addTeacherLocation_editText">Numer pokoju*</string>
-    <string name="addTeacherNote_editText">Notatka*</string>
-    <string name="addTeacherButton_editText">Dodaj nauczyciela</string>
-    <string name="editTeacherButton_editText">Edytuj nauczyciela</string>
-    <string name="removeTeacherButton_editText">Usuń nauczyciela</string>
-    <string name="cardView_teacherNameAndSurname">Imię i nazwisko</string>
-    <string name="cardView_teacherDegree">Tytuł naukowy</string>
-    <string name="addTeacherError_missing">Nie wprowadzono wymaganych danych</string>
-    <string name="teacherAdded_toast">Nauczyciel został dodany</string>
-    <string name="teacherEdited_toast">Nauczyciel został zmieniony</string>
-    <string name="teacherRemoved_toast">Nauczyciel został usunięty</string>
     <string name="weather_city_menu">Miejscowość</string>
     <string name="weather_updated_date">Zaktualizowano:</string>
     <string name="weather_weather_menu">Pogoda</string>

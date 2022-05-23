@@ -10,16 +10,6 @@
             android:title="@string/menu_subjects" />
 
         <item
-            android:id="@+id/nav_marks"
-            android:icon="@drawable/ic_baseline_emoji_events_24"
-            android:title="@string/menu_marks" />
-
-        <item
-            android:id="@+id/nav_teachers"
-            android:icon="@drawable/ic_baseline_people_24"
-            android:title="@string/menu_teachers" />
-
-        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_baseline_calendar_month_24"
             android:title="@string/menu_events" />

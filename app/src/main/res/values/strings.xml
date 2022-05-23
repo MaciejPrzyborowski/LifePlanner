@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">SchoolPlaner</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="menu_subjects">Subjects</string>
-    <string name="menu_marks">Marks</string>
-    <string name="menu_teachers">Teachers</string>
     <string name="menu_events">Events</string>
     <string name="menu_notes">Notes</string>
     <string name="addSubjectTitle">Add subject</string>
@@ -28,22 +24,6 @@
     <string name="cardView_subjectTeacher">Teacher</string>
     <string name="cardView_subjectLocation">Location</string>
     <string name="addTeacherTitle">Add Teacher</string>
-    <string name="addTeacherName_editText">Name</string>
-    <string name="addTeacherSurname_editText">Surrname</string>
-    <string name="addTeacherPhone_editText">Phone*</string>
-    <string name="addTeacherEMail_editText">E-mail address*</string>
-    <string name="addTeacherLocation_editText">Room number*</string>
-    <string name="addTeacherNote_editText">Note*</string>
-    <string name="addTeacherButton_editText">Add Teacher</string>
-    <string name="addTeacherDegree_editText">Degree</string>
-    <string name="editTeacherButton_editText">Edit Teacher</string>
-    <string name="removeTeacherButton_editText">Remove Teacher</string>
-    <string name="cardView_teacherNameAndSurname">Name and Surname</string>
-    <string name="cardView_teacherDegree">Degree</string>
-    <string name="teacherAdded_toast">Teacher has been added</string>
-    <string name="addTeacherError_missing">The required data has not been entered</string>
-    <string name="teacherEdited_toast">Teacher has been edited</string>
-    <string name="teacherRemoved_toast">Teacher has been removed</string>
     <string name="weather_city_menu">City</string>
     <string name="weather_updated_date">Updated at:</string>
     <string name="weather_weather_menu">Weather</string>

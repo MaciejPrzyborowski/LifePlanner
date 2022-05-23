@@ -3,31 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
-
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.schoolplanner.ui.home.HomeFragment"
-        android:label="@string/menu_subjects"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@+id/nav_events">
 
     <fragment
         android:id="@+id/nav_subjects"
         android:name="com.example.schoolplanner.ui.subjects.SubjectsFragment"
         android:label="@string/menu_subjects"
         tools:layout="@layout/fragment_subjects" />
-
-    <fragment
-        android:id="@+id/nav_marks"
-        android:name="com.example.schoolplanner.ui.marks.MarksFragment"
-        android:label="@string/menu_marks"
-        tools:layout="@layout/fragment_marks" />
-
-    <fragment
-        android:id="@+id/nav_teachers"
-        android:name="com.example.schoolplanner.ui.teachers.TeachersFragment"
-        android:label="@string/menu_teachers"
-        tools:layout="@layout/fragment_teachers" />
 
     <fragment
         android:id="@+id/nav_events"

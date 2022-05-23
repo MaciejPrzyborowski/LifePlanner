@@ -17,21 +17,4 @@
         <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="addTeacher_editText">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">14</item>
-        <item name="android:backgroundTint">#FFFFFF</item>
-        <item name="android:fontFamily">@font/roboto</item>
-        <item name="android:inputType">textPersonName</item>
-        <item name="android:paddingStart">15dp</item>
-        <item name="android:textSize">18dp</item>
-    </style>
-
-    <style name="addTeacher_imageView">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">1</item>
-    </style>
-
 </resources>
