@@ -24,7 +24,7 @@
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/cardview_teacher.xml" value="0.29739583333333336" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/content_main.xml" value="0.2962962962962963" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_add_subject.xml" value="0.3307291666666667" />
-        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_addtask_calendar.xml" value="0.34629629629629627" />
+        <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_addtask_calendar.xml" value="0.16158536585365854" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_calendar_view.xml" value="0.1" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_currency.xml" value="0.2962962962962963" />
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/layout/fragment_events.xml" value="0.34406085430076067" />
@@ -40,6 +40,9 @@
         <entry key="..\:/Users/SztangerSs/AndroidStudioProjects/SchoolPlanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/test" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

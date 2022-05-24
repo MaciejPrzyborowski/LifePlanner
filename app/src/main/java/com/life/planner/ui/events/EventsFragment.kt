@@ -1,41 +1,18 @@
 package com.life.planner.ui.events
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
-import android.app.TimePickerDialog
-import android.content.ContentValues
-import android.database.sqlite.SQLiteDatabase
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.applandeo.materialcalendarview.EventDay
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.life.planner.R
-import com.life.planner.databinding.FragmentAddtaskCalendarBinding
-import com.life.planner.databinding.FragmentCalendarViewBinding
 import com.life.planner.databinding.FragmentEventsBinding
-import java.text.SimpleDateFormat
-import java.util.*
 
 class EventsFragment : Fragment() {
 
     private var _binding: FragmentEventsBinding? = null
     private val binding get() = _binding!!
-
-    private var _addTaskBinding: FragmentAddtaskCalendarBinding? = null
-    private val addTaskBinding get() = _addTaskBinding!!
-
-    private var _calendarBinding: FragmentCalendarViewBinding? = null
-    private val calendarBinding get() = _calendarBinding!!
-
-    private lateinit var dbDate: ArrayList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,160 +20,15 @@ class EventsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEventsBinding.inflate(inflater, container, false)
-        _addTaskBinding = FragmentAddtaskCalendarBinding.inflate(inflater, container, false)
-        _calendarBinding = FragmentCalendarViewBinding.inflate(inflater, container, false)
-
-        val dbHelper = EventsDBHelper(requireContext())
-        val db = dbHelper.writableDatabase
-        calendarBinding.calendarView.setEvents(getHighlitedDays(db))
-
         binding.calendarMenu.setOnClickListener {
-            val dialog = BottomSheetDialog(requireContext())
-            dialog.setContentView(calendarBinding.root)
-            dialog.show()
+            val showCalendar = ShowCalendar()
+            showCalendar.show(requireFragmentManager(), "xd")
         }
         binding.addTaskMenu.setOnClickListener {
-            val dialog = BottomSheetDialog(requireContext())
-            dialog.setContentView(addTaskBinding.root)
-            dialog.show()
-
-            val addTaskTitle = addTaskBinding.addTaskTitle
-            val addTaskDesc = addTaskBinding.addTaskDescription
-            val addTaskDate = addTaskBinding.addTaskDate
-            val addTaskTime = addTaskBinding.addTaskTime
-            val addTaskButton = addTaskBinding.addTask
-
-            addTaskDate.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                val datePickerDialog = DatePickerDialog(
-                    requireContext(),
-                    addDateSetListener(calendar, addTaskDate),
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)
-                )
-                datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
-                datePickerDialog.show()
-            }
-
-            addTaskTime.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                val timePickerDialog = TimePickerDialog(
-                    requireContext(), addTimeSetListener(calendar, addTaskTime),
-                    calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true
-                )
-                timePickerDialog.show()
-            }
-
-            addTaskButton.setOnClickListener {
-                if (checkData(
-                        addTaskTitle.text.toString(),
-                        addTaskDesc.text.toString(),
-                        addTaskDate.text.toString(),
-                        addTaskTime.text.toString()
-                    )
-                ) {
-                    addTask(
-                        db,
-                        createContentValue(
-                            addTaskTitle.text.toString(),
-                            addTaskDesc.text.toString(),
-                            addTaskDate.text.toString(),
-                            addTaskTime.text.toString()
-                        )
-                    )
-                    dialog.dismiss()
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Nie wprowadzono wszystkich danych",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+            val addTaskCalendar = AddTaskCalendar()
+            addTaskCalendar.show(requireFragmentManager(), "xd")
         }
         return binding.root
-    }
-
-    private fun getHighlitedDays(db: SQLiteDatabase): MutableList<EventDay> {
-        val events: MutableList<EventDay> = ArrayList()
-        dbDate = ArrayList()
-
-        val cursor = db.query(
-            DBInfo.TABLE_NAME, null, null, null,
-            null, null, null
-        )
-        if (cursor.count > 0) {
-            cursor.moveToFirst()
-            while (!cursor.isAfterLast) {
-                dbDate.add(cursor.getString(3))
-                cursor.moveToNext()
-            }
-        }
-        cursor.close()
-
-        for (data in dbDate) {
-            val calendar = java.util.Calendar.getInstance()
-            val items1: List<String> = data.split(".")
-            val dd = items1[0]
-            val month = items1[1]
-            val year = items1[2]
-            calendar[java.util.Calendar.DAY_OF_MONTH] = dd.toInt()
-            calendar[java.util.Calendar.MONTH] = month.toInt() - 1
-            calendar[java.util.Calendar.YEAR] = year.toInt()
-            events.add(EventDay(calendar, R.drawable.dot))
-        }
-        return events
-    }
-
-
-    private fun checkData(title: String, desc: String, date: String, time: String): Boolean {
-        if (title.isNotEmpty() && desc.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty()) {
-            return true
-        }
-        return false
-    }
-
-    private fun addTask(db: SQLiteDatabase, value: ContentValues) {
-        db.insertOrThrow(DBInfo.TABLE_NAME, null, value)
-    }
-
-    private fun createContentValue(
-        title: String,
-        desc: String,
-        date: String,
-        time: String
-    ): ContentValues {
-        val contentValue = ContentValues()
-        contentValue.put(DBInfo.TABLE_COLUMN_TITLE, title)
-        contentValue.put(DBInfo.TABLE_COLUMN_DESC, desc)
-        contentValue.put(DBInfo.TABLE_COLUMN_DATE, date)
-        contentValue.put(DBInfo.TABLE_COLUMN_TIME, time)
-        return contentValue
-    }
-
-    private fun addDateSetListener(calendar: Calendar, text: EditText): OnDateSetListener {
-        val dateSetListener = OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-            calendar.set(Calendar.YEAR, year)
-            calendar.set(Calendar.MONTH, monthOfYear)
-            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-            val sdf = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-            text.setText(sdf.format(calendar.time))
-        }
-        return dateSetListener
-    }
-
-    private fun addTimeSetListener(
-        calendar: Calendar,
-        text: EditText
-    ): TimePickerDialog.OnTimeSetListener {
-        val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
-            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-            calendar.set(Calendar.MINUTE, minute)
-            val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-            text.setText(sdf.format(calendar.time))
-        }
-        return timeSetListener
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
