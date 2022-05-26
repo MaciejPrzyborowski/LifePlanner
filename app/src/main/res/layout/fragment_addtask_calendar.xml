@@ -69,19 +69,15 @@
             android:textColor="@android:color/black"
             android:text="@string/addTask_date" />
 
-        <EditText
+        <TextView
             android:id="@+id/addTaskDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/btn_border"
             android:hint="@string/addTask_date_hint"
-            android:importantForAutofill="no"
-            android:inputType="none"
             android:padding="15dp"
-            android:singleLine="true"
-            android:textSize="14sp"
-            tools:ignore="TextFields" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -91,17 +87,14 @@
             android:textColor="@android:color/black"
             android:text="@string/addTask_time" />
 
-        <EditText
+        <TextView
             android:id="@+id/addTaskTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/btn_border"
             android:hint="@string/addTask_time_hint"
-            android:importantForAutofill="no"
-            android:inputType="none"
             android:padding="15dp"
-            android:singleLine="true"
             android:textSize="14sp" />
 
         <Button

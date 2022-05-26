@@ -50,4 +50,7 @@
     <string name="weather_wind_units">km/h</string>
     <string name="weather_pressure_units">hPa</string>
     <string name="weather_humidity_units">%</string>
+    <string name="addTaskCalendarError_missing">The required data has not been entered</string>
+    <string name="event_menu_edit">Edit</string>
+    <string name="event_menu_complete">Complete</string>
 </resources>

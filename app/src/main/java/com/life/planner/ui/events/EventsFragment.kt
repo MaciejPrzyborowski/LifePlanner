@@ -22,11 +22,11 @@ class EventsFragment : Fragment() {
         _binding = FragmentEventsBinding.inflate(inflater, container, false)
         binding.calendarMenu.setOnClickListener {
             val showCalendar = ShowCalendar()
-            showCalendar.show(requireFragmentManager(), "xd")
+            showCalendar.show(parentFragmentManager, "xd")
         }
         binding.addTaskMenu.setOnClickListener {
-            val addTaskCalendar = AddTaskCalendar()
-            addTaskCalendar.show(requireFragmentManager(), "xd")
+            val addTaskCalendar = AddTaskCalendar(binding.taskRecyclerMenu)
+            addTaskCalendar.show(parentFragmentManager, "xd")
         }
         return binding.root
     }
@@ -35,7 +35,7 @@ class EventsFragment : Fragment() {
         super.onViewCreated(itemView, savedInstanceState)
         binding.taskRecyclerMenu.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = EventsRecyclerAdapter(EventsDBHelper(context).writableDatabase)
+            adapter = EventsRecyclerAdapter(binding.taskRecyclerMenu, EventsDBHelper(context).writableDatabase)
         }
     }
 

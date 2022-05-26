@@ -9,8 +9,7 @@ object DBInfo : BaseColumns {
     const val TABLE_NAME = "Events"
     const val TABLE_COLUMN_TITLE = "Title"
     const val TABLE_COLUMN_DESC = "Description"
-    const val TABLE_COLUMN_DATE = "Date"
-    const val TABLE_COLUMN_TIME = "Time"
+    const val TABLE_COLUMN_TIMESTAMP = "Timestamp"
 }
 
 object BasicCommands {
@@ -19,8 +18,7 @@ object BasicCommands {
                 "${BaseColumns._ID} INTEGER PRIMARY KEY," +
                 "${DBInfo.TABLE_COLUMN_TITLE} TEXT NOT NULL," +
                 "${DBInfo.TABLE_COLUMN_DESC} TEXT NOT NULL," +
-                "${DBInfo.TABLE_COLUMN_DATE} TEXT NOT NULL," +
-                "${DBInfo.TABLE_COLUMN_TIME} TEXT NOT NULL)"
+                "${DBInfo.TABLE_COLUMN_TIMESTAMP} TEXT NOT NULL)"
     const val SQL_DELETE_TABLE = "DROP TABLE IF EXISTS ${DBInfo.TABLE_NAME}"
 }
 
