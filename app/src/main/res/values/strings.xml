@@ -38,4 +38,18 @@
     <string name="dialog_completed_title_dialog">Task completed</string>
     <string name="dialog_completed_desc_dialog">Congratulations! You have successfully completed the task. Keep it up!</string>
     <string name="dialog_completed_confirm">Done</string>
+    <string name="addNote_title">Title note</string>
+    <string name="addNote_subtitle">Subtitle note</string>
+    <string name="addNote_text">Text note</string>
+    <string name="addNoteTitle">Add note</string>
+    <string name="addPicture_camera">Camera</string>
+    <string name="addPicture_gallery">Gallery</string>
+    <string name="addPicture_cancel">Cancel</string>
+    <string name="addPicture_title">Select picture</string>
+    <string name="addPicture_desc">Choose where to add the photo from</string>
+    <string name="addPicture_remove_title">Remove picture</string>
+    <string name="addPicture_remove_desc">Are you sure you want to delete the photo?</string>
+    <string name="addPicture_remove_yes">Yes</string>
+    <string name="addPicture_remove_no">No</string>
+    <string name="addPicture_remove_click">Hold longer to delete the photo</string>
 </resources>

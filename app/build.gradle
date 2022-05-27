@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.life.planner"
-        minSdk 25
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -38,6 +38,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'com.applandeo:material-calendar-view:1.9.0-rc03'
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

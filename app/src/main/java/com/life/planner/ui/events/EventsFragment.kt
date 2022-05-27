@@ -25,7 +25,7 @@ class EventsFragment : Fragment() {
             showCalendar.show(parentFragmentManager, "showCalendar")
         }
         binding.addTaskMenu.setOnClickListener {
-            val addTask = AddTask(binding.taskRecyclerMenu)
+            val addTask = AddTask(binding.eventRecyclerView)
             addTask.show(parentFragmentManager, "addTask")
         }
         return binding.root
@@ -33,16 +33,16 @@ class EventsFragment : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        binding.taskRecyclerMenu.apply {
+        binding.eventRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = EventsRecyclerAdapter(binding.taskRecyclerMenu, EventsDBHelper(context).writableDatabase)
+            adapter = EventsRecyclerAdapter(binding.eventRecyclerView, EventsDBHelper(context).writableDatabase)
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        binding.taskRecyclerMenu.adapter?.notifyDataSetChanged()
+        binding.eventRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun onDestroyView() {

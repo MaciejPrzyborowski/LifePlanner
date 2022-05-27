@@ -39,4 +39,18 @@
     <string name="dialog_completed_title_dialog">Ukończono zadanie</string>
     <string name="dialog_completed_desc_dialog">Gratulacje! Pomyślnie ukończyłeś zadanie. Tak trzymaj!</string>
     <string name="dialog_completed_confirm">Gotowe</string>
+    <string name="addNote_title">Tytuł notatki</string>
+    <string name="addNote_subtitle">Podtytuł notatki</string>
+    <string name="addNote_text">Tekst notatki</string>
+    <string name="addNoteTitle">Dodaj notatkę</string>
+    <string name="addPicture_camera">Kamera</string>
+    <string name="addPicture_gallery">Galeria</string>
+    <string name="addPicture_cancel">Anuluj</string>
+    <string name="addPicture_title">Wybierz zdjęcie</string>
+    <string name="addPicture_desc">Wybierz skąd chcesz dodać zdjęcie</string>
+    <string name="addPicture_remove_title">Usuń zdjęcie</string>
+    <string name="addPicture_remove_desc">Czy na pewno chcesz usunąc zdjęcie?</string>
+    <string name="addPicture_remove_no">Nie</string>
+    <string name="addPicture_remove_yes">Tak</string>
+    <string name="addPicture_remove_click">Przytrzymaj dłużej aby usunąć zdjęcie</string>
 </resources>

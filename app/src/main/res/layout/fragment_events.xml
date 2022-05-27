@@ -8,7 +8,7 @@
     tools:context=".ui.events.EventsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/taskRecycler_menu"
+        android:id="@+id/eventRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="25dp" />
@@ -23,7 +23,7 @@
         android:contentDescription="@string/icon_contentDescription"
         android:src="@drawable/ic_baseline_calendar_month_24"
         app:backgroundTint="#FFFFFF"
-        app:fabSize="mini"
+        app:fabCustomSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/black"

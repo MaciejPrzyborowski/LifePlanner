@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.life.planner" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +17,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolPlanner" >
         <activity
+            android:name="com.life.planner.ui.notes.AddNote"
+            android:exported="false"
+            android:label="@string/addNoteTitle" />
+
+        <activity
             android:name="com.life.planner.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.SchoolPlanner.NoActionBar" >
+            android:theme="@style/Theme.SchoolPlanner.NoActionBar"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
