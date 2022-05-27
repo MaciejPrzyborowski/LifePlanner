@@ -18,8 +18,10 @@
         android:theme="@style/Theme.SchoolPlanner" >
         <activity
             android:name="com.life.planner.ui.notes.AddNote"
-            android:exported="false"
-            android:label="@string/addNoteTitle" />
+            android:exported="false" />
+        <activity
+            android:name="com.life.planner.SettingsActivity"
+            android:exported="false" />
 
         <activity
             android:name="com.life.planner.MainActivity"
@@ -29,7 +31,6 @@
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
