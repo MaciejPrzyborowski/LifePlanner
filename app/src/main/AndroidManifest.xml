@@ -14,10 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolPlanner" >
         <activity
-            android:name="com.life.planner.ui.subjects.AddSubject"
-            android:exported="false"
-            android:label="@string/addSubjectTitle" />
-        <activity
             android:name="com.life.planner.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.SchoolPlanner.NoActionBar" >

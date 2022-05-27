@@ -22,11 +22,11 @@ class EventsFragment : Fragment() {
         _binding = FragmentEventsBinding.inflate(inflater, container, false)
         binding.calendarMenu.setOnClickListener {
             val showCalendar = ShowCalendar()
-            showCalendar.show(parentFragmentManager, "xd")
+            showCalendar.show(parentFragmentManager, "showCalendar")
         }
         binding.addTaskMenu.setOnClickListener {
-            val addTaskCalendar = AddTaskCalendar(binding.taskRecyclerMenu)
-            addTaskCalendar.show(parentFragmentManager, "xd")
+            val addTask = AddTask(binding.taskRecyclerMenu)
+            addTask.show(parentFragmentManager, "addTask")
         }
         return binding.root
     }

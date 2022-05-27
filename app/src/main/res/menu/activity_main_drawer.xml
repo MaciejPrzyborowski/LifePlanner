@@ -5,24 +5,18 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_subjects"
-            android:icon="@drawable/ic_baseline_school_24"
-            android:title="@string/menu_subjects" />
-
-        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_baseline_calendar_month_24"
             android:title="@string/menu_events" />
-
-        <item
-            android:id="@+id/nav_notes"
-            android:icon="@drawable/ic_baseline_library_books_24"
-            android:title="@string/menu_notes" />
 
         <item
             android:id="@+id/nav_weather"
             android:icon="@drawable/ic_baseline_wb_sunny_24"
             android:title="@string/menu_weather" />
 
+        <item
+            android:id="@+id/nav_notes"
+            android:icon="@drawable/ic_baseline_library_books_24"
+            android:title="@string/menu_notes" />
     </group>
 </menu>

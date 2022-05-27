@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:background="#F3F0F0"
     android:orientation="vertical"
-    android:padding="25dp"
-    tools:context=".ui.subjects.AddSubject">
+    android:padding="25dp">
 
     <LinearLayout
         android:id="@+id/infoOK"
@@ -31,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
-                android:text="@string/weather_city_menu"
+                tools:text="Poznań, PL"
                 android:textColor="#000000"
                 android:textSize="30sp" />
 
@@ -47,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:gravity="center"
-                    android:text="@string/weather_updated_date"
+                    tools:text="Zaktualizowano: 01/01/2022 00:00:00"
                     android:textColor="#000000"
                     android:textSize="14sp" />
 
@@ -63,7 +62,6 @@
                     android:contentDescription="@string/icon_contentDescription"
                     app:srcCompat="@drawable/ic_baseline_refresh_24"
                     app:tint="#000000" />
-
             </LinearLayout>
 
         </LinearLayout>
@@ -82,7 +80,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="@string/weather_weather_menu"
+                tools:text="Zachmurzenie umiarkowane"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
@@ -94,7 +92,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
-                android:text="@string/weather_temperature_menu"
+                tools:text="0°C"
                 android:textColor="#000000"
                 android:textSize="72sp" />
 
@@ -106,7 +104,7 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="@string/weather_feelTemperature_menu"
+                tools:text="Odczuwalna: 0°C"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -152,7 +150,7 @@
                         android:id="@+id/sunrise"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/weather_hour_menu"
+                        tools:text="00:00:00"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -183,7 +181,7 @@
                         android:id="@+id/sunset"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/weather_hour_menu"
+                        tools:text="00:00:00"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -224,7 +222,7 @@
                         android:id="@+id/wind"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/weather_value_menu"
+                        tools:text="0 km/h"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -255,7 +253,7 @@
                         android:id="@+id/pressure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/weather_value_menu"
+                        tools:text="1000 hPa"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -286,7 +284,7 @@
                         android:id="@+id/humidity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/weather_value_menu"
+                        tools:text="50%"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>

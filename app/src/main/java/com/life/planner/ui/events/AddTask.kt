@@ -20,7 +20,11 @@ import com.life.planner.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddTaskCalendar(private val recyclerView: RecyclerView, private val eventID: Int = -1) : BottomSheetDialogFragment() {
+class AddTask(
+    private val recyclerView: RecyclerView,
+    private val eventID: Int = -1,
+    private val position: Int = -1
+) : BottomSheetDialogFragment() {
     private lateinit var addTaskTitle: EditText
     private lateinit var addTaskDesc: EditText
     private lateinit var addTaskDate: TextView
@@ -121,17 +125,13 @@ class AddTaskCalendar(private val recyclerView: RecyclerView, private val eventI
         return timeSetListener
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private fun addTask(db: SQLiteDatabase, value: ContentValues) {
-        if(eventID == -1)
-        {
+        if (eventID == -1) {
             db.insertOrThrow(DBInfo.TABLE_NAME, null, value)
-        }
-        else
-        {
+        } else {
             db.update(DBInfo.TABLE_NAME, value, BaseColumns._ID + "=?", arrayOf(eventID.toString()))
         }
-        recyclerView.adapter!!.notifyDataSetChanged()
+        recyclerView.adapter!!.notifyItemChanged(position)
     }
 
     private fun createContentValue(
@@ -150,8 +150,7 @@ class AddTaskCalendar(private val recyclerView: RecyclerView, private val eventI
     }
 
     private fun getData(db: SQLiteDatabase) {
-        if(eventID != -1)
-        {
+        if (eventID != -1) {
             val cursor = db.rawQuery(
                 "Select * FROM ${DBInfo.TABLE_NAME} WHERE ${BaseColumns._ID} = " +
                         eventID.toString(), null
