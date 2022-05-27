@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="2"
+            android:layout_weight="1.5"
             android:background="@drawable/edit_txt_background"
             android:gravity="start"
             android:hint="@string/addNote_text"
@@ -53,10 +53,11 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_weight="6"
+            android:layout_weight="7"
             android:contentDescription="@string/icon_contentDescription"
             android:scaleType="fitCenter"
-            android:visibility="visible" />
+            android:visibility="gone"
+            tools:ignore="ImageContrastCheck" />
 
     </LinearLayout>
 

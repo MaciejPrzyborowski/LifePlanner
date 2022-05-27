@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.BaseColumns
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
@@ -16,6 +17,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.life.planner.R
@@ -111,7 +113,13 @@ class AddNote : AppCompatActivity() {
         contentValue.put(DBInfo.TABLE_COLUMN_TITLE, title)
         contentValue.put(DBInfo.TABLE_COLUMN_DESC, desc)
         contentValue.put(DBInfo.TABLE_COLUMN_UPDATED, updated.toString())
-        //contentValue.put(DBInfo.TABLE_COLUMN_PICTURE, imageToByteArray(picture))
+        if (picture.drawable != null) {
+            contentValue.put(DBInfo.TABLE_COLUMN_PICTURE, imageToByteArray(picture))
+        }
+        else
+        {
+            contentValue.putNull(DBInfo.TABLE_COLUMN_PICTURE)
+        }
         return contentValue
     }
 
@@ -125,6 +133,13 @@ class AddNote : AppCompatActivity() {
                 cursor.moveToFirst()
                 addNoteTitle.setText(cursor.getString(1))
                 addNoteDesc.setText(cursor.getString(2))
+                val byteArray = cursor.getBlob(4)
+                if(byteArray != null)
+                {
+                    byteArrayToImage(byteArray)
+                    addPictureButton.visibility = View.GONE
+                    addNotePicture.visibility = View.VISIBLE
+                }
             }
             cursor.close()
         }
@@ -135,10 +150,10 @@ class AddNote : AppCompatActivity() {
         pictureDialog.setTitle(resources.getString(R.string.addPicture_title))
         pictureDialog.setMessage(resources.getString(R.string.addPicture_desc))
         pictureDialog.setPositiveButton(resources.getString(R.string.addPicture_camera)) { _, _ ->
-            ImagePicker.with(this).cameraOnly().crop().maxResultSize(3000, 4000).start()
+            ImagePicker.with(this).cameraOnly().crop().maxResultSize(2000, 2000).start()
         }
         pictureDialog.setNegativeButton(resources.getString(R.string.addPicture_gallery)) { _, _ ->
-            ImagePicker.with(this).galleryOnly().crop().maxResultSize(3000, 4000).start()
+            ImagePicker.with(this).galleryOnly().crop().maxResultSize(2000, 2000).start()
         }
         pictureDialog.setNeutralButton(resources.getString(R.string.addPicture_cancel)) { dialog, _ ->
             dialog.cancel()
@@ -163,11 +178,16 @@ class AddNote : AppCompatActivity() {
         pictureDialog.show()
     }
 
-    private fun imageToByteArray(image: ImageView): ByteArray {
-        val bitmap = (image.drawable as BitmapDrawable).bitmap
+    private fun imageToByteArray(imageView: ImageView): ByteArray {
+        val bitmap = imageView.drawable.toBitmap()
         val stream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
         return stream.toByteArray()
+    }
+
+    private fun byteArrayToImage(byteArray: ByteArray) {
+        val bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+        addNotePicture.setImageBitmap(bm)
     }
 
     @Deprecated("Deprecated in Java")
