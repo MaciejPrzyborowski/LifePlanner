@@ -99,10 +99,10 @@ class AddNote : AppCompatActivity() {
         pictureDialog.setTitle(resources.getString(R.string.addPicture_title))
         pictureDialog.setMessage(resources.getString(R.string.addPicture_desc))
         pictureDialog.setPositiveButton(resources.getString(R.string.addPicture_camera)) { _, _ ->
-            ImagePicker.with(this).cameraOnly().crop().maxResultSize(2000, 2000).start()
+            ImagePicker.with(this).cameraOnly().crop().maxResultSize(1200, 1000).start()
         }
         pictureDialog.setNegativeButton(resources.getString(R.string.addPicture_gallery)) { _, _ ->
-            ImagePicker.with(this).galleryOnly().crop().maxResultSize(2000, 2000).start()
+            ImagePicker.with(this).galleryOnly().crop().maxResultSize(1200, 1000).start()
         }
         pictureDialog.setNeutralButton(resources.getString(R.string.addPicture_cancel)) { dialog, _ ->
             dialog.cancel()
