@@ -77,20 +77,12 @@ class AddNote : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     this,
-                    "Nie wprowadzono wszystkich danych",
+                    resources.getString(R.string.addNoteError_missing),
                     Toast.LENGTH_SHORT
                 ).show()
             }
         }
     }
-
-    private fun checkData(title: String, desc: String): Boolean {
-        if (title.isNotEmpty() && desc.isNotEmpty()) {
-            return true
-        }
-        return false
-    }
-
 
     private fun addNote(db: SQLiteDatabase, value: ContentValues) {
         if (taskID == -1) {
@@ -99,6 +91,40 @@ class AddNote : AppCompatActivity() {
             db.update(DBInfo.TABLE_NAME, value, BaseColumns._ID + "=?", arrayOf(taskID.toString()))
         }
         onBackPressed()
+    }
+
+
+    private fun addPicture() {
+        val pictureDialog = AlertDialog.Builder(this)
+        pictureDialog.setTitle(resources.getString(R.string.addPicture_title))
+        pictureDialog.setMessage(resources.getString(R.string.addPicture_desc))
+        pictureDialog.setPositiveButton(resources.getString(R.string.addPicture_camera)) { _, _ ->
+            ImagePicker.with(this).cameraOnly().crop().maxResultSize(2000, 2000).start()
+        }
+        pictureDialog.setNegativeButton(resources.getString(R.string.addPicture_gallery)) { _, _ ->
+            ImagePicker.with(this).galleryOnly().crop().maxResultSize(2000, 2000).start()
+        }
+        pictureDialog.setNeutralButton(resources.getString(R.string.addPicture_cancel)) { dialog, _ ->
+            dialog.cancel()
+        }
+        pictureDialog.create()
+        pictureDialog.show()
+    }
+
+    private fun removePicture() {
+        val pictureDialog = AlertDialog.Builder(this)
+        pictureDialog.setTitle(resources.getString(R.string.addPicture_remove_title))
+        pictureDialog.setMessage(resources.getString(R.string.addPicture_remove_desc))
+        pictureDialog.setPositiveButton(resources.getString(R.string.addPicture_remove_yes)) { _, _ ->
+            addNotePicture.setImageResource(0)
+            addNotePicture.visibility = View.GONE
+            addPictureButton.visibility = View.VISIBLE
+        }
+        pictureDialog.setNegativeButton(resources.getString(R.string.addPicture_remove_no)) { dialog, _ ->
+            dialog.cancel()
+        }
+        pictureDialog.create()
+        pictureDialog.show()
     }
 
     private fun createContentValue(
@@ -143,37 +169,11 @@ class AddNote : AppCompatActivity() {
         }
     }
 
-    private fun addPicture() {
-        val pictureDialog = AlertDialog.Builder(this)
-        pictureDialog.setTitle(resources.getString(R.string.addPicture_title))
-        pictureDialog.setMessage(resources.getString(R.string.addPicture_desc))
-        pictureDialog.setPositiveButton(resources.getString(R.string.addPicture_camera)) { _, _ ->
-            ImagePicker.with(this).cameraOnly().crop().maxResultSize(2000, 2000).start()
+    private fun checkData(title: String, desc: String): Boolean {
+        if (title.isNotEmpty() && desc.isNotEmpty()) {
+            return true
         }
-        pictureDialog.setNegativeButton(resources.getString(R.string.addPicture_gallery)) { _, _ ->
-            ImagePicker.with(this).galleryOnly().crop().maxResultSize(2000, 2000).start()
-        }
-        pictureDialog.setNeutralButton(resources.getString(R.string.addPicture_cancel)) { dialog, _ ->
-            dialog.cancel()
-        }
-        pictureDialog.create()
-        pictureDialog.show()
-    }
-
-    private fun removePicture() {
-        val pictureDialog = AlertDialog.Builder(this)
-        pictureDialog.setTitle(resources.getString(R.string.addPicture_remove_title))
-        pictureDialog.setMessage(resources.getString(R.string.addPicture_remove_desc))
-        pictureDialog.setPositiveButton(resources.getString(R.string.addPicture_remove_yes)) { _, _ ->
-            addNotePicture.setImageResource(0)
-            addNotePicture.visibility = View.GONE
-            addPictureButton.visibility = View.VISIBLE
-        }
-        pictureDialog.setNegativeButton(resources.getString(R.string.addPicture_remove_no)) { dialog, _ ->
-            dialog.cancel()
-        }
-        pictureDialog.create()
-        pictureDialog.show()
+        return false
     }
 
     private fun imageToByteArray(imageView: ImageView): ByteArray {

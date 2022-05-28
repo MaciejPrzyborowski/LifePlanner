@@ -52,4 +52,12 @@
     <string name="addPicture_remove_yes">Yes</string>
     <string name="addPicture_remove_no">No</string>
     <string name="addPicture_remove_click">Hold longer to delete the photo</string>
+    <string name="addNoteError_missing">The required data has not been entered</string>
+    <string name="settings_chooseLanguage_dialog">Choose language</string>
+    <string name="settings_chooseLanguage_polish">Polish</string>
+    <string name="settings_chooseLanguage_English">English</string>
+    <string name="settings_language_menu">Application language</string>
+    <string name="settings_about_menu">About</string>
+    <string name="settings_chooseLanguage_toast">The language has been changed</string>
+    <string name="settings_about_toast">Created by Maciej Przyborowski</string>
 </resources>

@@ -5,6 +5,7 @@
     <string name="menu_events">Wydarzenia</string>
     <string name="menu_notes">Notatki</string>
     <string name="addTaskCalendarError_missing">Nie wprowadzono wymaganych danych</string>
+    <string name="addNoteError_missing">Nie wprowadzono wymaganych danych</string>
     <string name="icon_contentDescription">Ikona</string>
     <string name="weather_updated_date">Zaktualizowano</string>
     <string name="weather_pressure_menu">Ciśnienie</string>
@@ -53,4 +54,11 @@
     <string name="addPicture_remove_no">Nie</string>
     <string name="addPicture_remove_yes">Tak</string>
     <string name="addPicture_remove_click">Przytrzymaj dłużej aby usunąć zdjęcie</string>
+    <string name="settings_chooseLanguage_dialog">Wybierz język</string>
+    <string name="settings_chooseLanguage_polish">Polski</string>
+    <string name="settings_chooseLanguage_English">Angielski</string>
+    <string name="settings_language_menu">Język aplikacji</string>
+    <string name="settings_about_menu">O aplikacji</string>
+    <string name="settings_chooseLanguage_toast">Język aplikacji został zmieniony</string>
+    <string name="settings_about_toast">Stworzone przez Maciej Przyborowski</string>
 </resources>
