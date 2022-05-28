@@ -39,7 +39,6 @@
     <string name="dialog_completed_desc_dialog">Congratulations! You have successfully completed the task. Keep it up!</string>
     <string name="dialog_completed_confirm">Done</string>
     <string name="addNote_title">Title note</string>
-    <string name="addNote_subtitle">Subtitle note</string>
     <string name="addNote_text">Text note</string>
     <string name="addNoteTitle">Add note</string>
     <string name="addPicture_camera">Camera</string>

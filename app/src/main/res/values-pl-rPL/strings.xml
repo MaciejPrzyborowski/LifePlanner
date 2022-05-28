@@ -41,7 +41,6 @@
     <string name="dialog_completed_desc_dialog">Gratulacje! Pomyślnie ukończyłeś zadanie. Tak trzymaj!</string>
     <string name="dialog_completed_confirm">Gotowe</string>
     <string name="addNote_title">Tytuł notatki</string>
-    <string name="addNote_subtitle">Podtytuł notatki</string>
     <string name="addNote_text">Tekst notatki</string>
     <string name="addNoteTitle">Dodaj notatkę</string>
     <string name="addPicture_camera">Kamera</string>

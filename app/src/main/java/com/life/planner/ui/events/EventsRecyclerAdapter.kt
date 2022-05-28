@@ -3,7 +3,6 @@ package com.life.planner.ui.events
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.res.Resources
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -18,7 +17,6 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.ConfigurationCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.life.planner.R
 import java.util.*
