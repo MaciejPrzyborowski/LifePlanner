@@ -14,7 +14,7 @@ import java.util.*
 
 
 /**
- * Klasa obsługjąca wyświetlanie kalendarza z zaplowanymi wydarzeniami
+ * Klasa obsługująca wyświetlanie kalendarza z zaplowanymi wydarzeniami
  *
  */
 class ShowCalendar : BottomSheetDialogFragment() {
