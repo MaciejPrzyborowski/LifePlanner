@@ -59,4 +59,8 @@
     <string name="settings_about_menu">About</string>
     <string name="settings_chooseLanguage_toast">The language has been changed</string>
     <string name="settings_about_toast">Created by Maciej Przyborowski</string>
+    <string name="removeNote_confirm_desc">Are you sure you want delete this note?</string>
+    <string name="removeNote_confirm_title">Remove note</string>
+    <string name="removeNote_confirm_yes">Yes</string>
+    <string name="removeNote_confirm_no">No</string>
 </resources>

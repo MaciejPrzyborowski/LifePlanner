@@ -60,4 +60,8 @@
     <string name="settings_about_menu">O aplikacji</string>
     <string name="settings_chooseLanguage_toast">Język aplikacji został zmieniony</string>
     <string name="settings_about_toast">Stworzone przez Maciej Przyborowski</string>
+    <string name="removeNote_confirm_desc">Czy na pewno chcesz usunąć tą notatkę?</string>
+    <string name="removeNote_confirm_title">Usuń notatkę</string>
+    <string name="removeNote_confirm_yes">Tak</string>
+    <string name="removeNote_confirm_no">Nie</string>
 </resources>

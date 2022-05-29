@@ -1,8 +1,10 @@
 package com.life.planner.ui.notes
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
@@ -66,6 +68,31 @@ class NotesRecyclerAdapter(private val db: SQLiteDatabase) :
             intent.putExtra("ID", viewHolder.notesId.text.toString())
             context!!.startActivity(intent)
         }
+        viewHolder.itemView.findViewById<CardView>(R.id.notesCardView).setOnLongClickListener {
+            removeNote(viewHolder.notesId.text.toString().toInt(), position)
+            true
+        }
+    }
+
+    /**
+     * Wyświetla komunikat potwierdzający usunięcie zadania
+     *
+     * @param noteId - identyfikator notatki
+     * @param position - pozycja na liście
+     */
+    private fun removeNote(noteId : Int, position: Int)
+    {
+        val removeAlertDialog = AlertDialog.Builder(context)
+        removeAlertDialog.setTitle(R.string.removeNote_confirm_title)
+            .setMessage(R.string.removeNote_confirm_desc)
+            .setPositiveButton(R.string.removeNote_confirm_yes) { _, _ ->
+                db.delete(
+                    DBInfo.TABLE_NAME, BaseColumns._ID + "=?",
+                    arrayOf(noteId.toString())
+                )
+                notifyItemRemoved(position)
+            }
+            .setNegativeButton(R.string.removeNote_confirm_no) { dialog, _ -> dialog.cancel() }.show()
     }
 
     /**
