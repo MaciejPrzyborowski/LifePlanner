@@ -10,11 +10,23 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.life.planner.databinding.FragmentNotesBinding
 
+/**
+ * Klasa obsługująca widok fragmentu Notes
+ *
+ */
 class NotesFragment : Fragment() {
 
     private var _binding: FragmentNotesBinding? = null
     private val binding get() = _binding!!
 
+    /**
+     * Funkcja wykonywana przy tworzeniu widoku
+     *
+     * @param inflater - uchwyt LayoutInflater
+     * @param container - uchwyt grupy widoków
+     * @param savedInstanceState - uchwyt Bundle
+     * @return widok fragmentu
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,6 +40,12 @@ class NotesFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Funkcja wykonywana przy stworzeniu widoku
+     *
+     * @param itemView - uchwyt widoku
+     * @param savedInstanceState - uchwyt Bundle
+     */
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         binding.notesRecyclerView.apply {
@@ -36,12 +54,20 @@ class NotesFragment : Fragment() {
         }
     }
 
+    /**
+     * Funkcja wykonywana przy wznowieniu aplikacji
+     *
+     */
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
         binding.notesRecyclerView.adapter?.notifyDataSetChanged()
     }
 
+    /**
+     * Funkcja wykonywana przy niszczeniu widoku
+     *
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

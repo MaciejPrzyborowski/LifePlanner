@@ -15,11 +15,20 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.life.planner.databinding.ActivityMainBinding
 
+/**
+ * Główna klasa programu
+ *
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+    /**
+     * Funkcja wykonywana przy tworzeniu widoku
+     *
+     * @param savedInstanceState - uchwyt Bundle
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -40,25 +49,39 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Funkcja wykonywana przy tworzeniu menu
+     *
+     * @param menu - menu
+     * @return true
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
 
+    /**
+     * Listener obsługujący wybór opcji z pola nawigacji
+     *
+     * @param item - menu item
+     * @return true
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
-
                 true
             }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
+    /**
+     * Funkcja obsługująca nawigację po fragmentach
+     *
+     * @return true
+     */
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()

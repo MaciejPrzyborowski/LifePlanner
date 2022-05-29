@@ -21,6 +21,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.life.planner.R
 import java.io.ByteArrayOutputStream
 
+/**
+ * Klasa obsługująca dodawanie / aktualizowanie notatki
+ *
+ */
 @Suppress("DEPRECATION")
 class AddNote : AppCompatActivity() {
     private lateinit var addNoteTitle: EditText
@@ -30,6 +34,11 @@ class AddNote : AppCompatActivity() {
     private lateinit var addNoteButton: FloatingActionButton
     private var taskID: Int = -1
 
+    /**
+     * Funkcja wykonywana przy tworzeniu widoku
+     *
+     * @param savedInstanceState - uchwyt Bundle
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title = resources.getString(R.string.addNoteTitle)
@@ -84,6 +93,12 @@ class AddNote : AppCompatActivity() {
         }
     }
 
+    /**
+     * Zapisuje notatkę do bazy danych
+     *
+     * @param db - uchwyt bazy danych
+     * @param value - wartości do zapisania
+     */
     private fun addNote(db: SQLiteDatabase, value: ContentValues) {
         if (taskID == -1) {
             db.insertOrThrow(DBInfo.TABLE_NAME, null, value)
@@ -93,7 +108,10 @@ class AddNote : AppCompatActivity() {
         onBackPressed()
     }
 
-
+    /**
+     * Dodaje zdjęcie do pola ImageView
+     *
+     */
     private fun addPicture() {
         val pictureDialog = AlertDialog.Builder(this)
         pictureDialog.setTitle(resources.getString(R.string.addPicture_title))
@@ -111,6 +129,10 @@ class AddNote : AppCompatActivity() {
         pictureDialog.show()
     }
 
+    /**
+     * Usuwa zdjęcie z pola ImageView
+     *
+     */
     private fun removePicture() {
         val pictureDialog = AlertDialog.Builder(this)
         pictureDialog.setTitle(resources.getString(R.string.addPicture_remove_title))
@@ -127,6 +149,14 @@ class AddNote : AppCompatActivity() {
         pictureDialog.show()
     }
 
+    /**
+     * Zwraca wartości, które mają zostać zapisane w bazie danych
+     *
+     * @param title - tytuł notatki
+     * @param desc - opis notatki
+     * @param picture - łańcuch Byte zdjęcia
+     * @return wartości, które mają zostać zapisane w bazie danych
+     */
     private fun createContentValue(
         title: String,
         desc: String,
@@ -147,6 +177,11 @@ class AddNote : AppCompatActivity() {
         return contentValue
     }
 
+    /**
+     * Pobiera dane istniejącej już notatki z bazy danych
+     *
+     * @param db - uchwyt bazy danych
+     */
     private fun getData(db: SQLiteDatabase) {
         if (taskID != -1) {
             val cursor = db.rawQuery(
@@ -169,6 +204,13 @@ class AddNote : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sprawdza czy wymagane dane zostały wprowadzone
+     *
+     * @param title - tytuł notatki
+     * @param desc - opis notatki
+     * @return true - wprowadzono wszystkie dane
+     */
     private fun checkData(title: String, desc: String): Boolean {
         if (title.isNotEmpty() && desc.isNotEmpty()) {
             return true
@@ -176,6 +218,12 @@ class AddNote : AppCompatActivity() {
         return false
     }
 
+    /**
+     * Zamienia zdjęcie na łańcuch Byte
+     *
+     * @param imageView - zdjęcie ImageView
+     * @return łańcuch byte zdjęcia
+     */
     private fun imageToByteArray(imageView: ImageView): ByteArray {
         val bitmap = imageView.drawable.toBitmap()
         val stream = ByteArrayOutputStream()
@@ -183,11 +231,23 @@ class AddNote : AppCompatActivity() {
         return stream.toByteArray()
     }
 
+    /**
+     * Zamienia łańcuch Byte na zdjęcie
+     *
+     * @param byteArray - łańcuch Byte zdjęcia
+     */
     private fun byteArrayToImage(byteArray: ByteArray) {
         val bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
         addNotePicture.setImageBitmap(bm)
     }
 
+    /**
+     * Przetwarza wybrane przez użytkownika zdjęcie
+     *
+     * @param requestCode - kod komunikatu wyboru zdjęcia
+     * @param resultCode - kod rezultatu
+     * @param data - dane zdjęcia
+     */
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -206,6 +266,12 @@ class AddNote : AppCompatActivity() {
         }
     }
 
+    /**
+     * Listener obsługujący wybór opcji z pola nawigacji
+     *
+     * @param item - menu item
+     * @return true
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {

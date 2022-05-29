@@ -25,7 +25,10 @@ import java.util.*
 import java.util.concurrent.Executors
 import kotlin.math.roundToInt
 
-
+/**
+ * Klasa obsługująca widok fragmentu Weather
+ *
+ */
 @Suppress("DEPRECATION")
 class WeatherFragment : Fragment() {
     private var _binding: FragmentWeatherBinding? = null
@@ -48,6 +51,14 @@ class WeatherFragment : Fragment() {
     private val myExecutor = Executors.newSingleThreadExecutor()
     private val myHandler = Handler(Looper.getMainLooper())
 
+    /**
+     * Funkcja wykonywana przy tworzeniu widoku
+     *
+     * @param inflater - uchwyt LayoutInflater
+     * @param container - uchwyt grupy widoków
+     * @param savedInstanceState - uchwyt Bundle
+     * @return widok fragmentu
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -64,6 +75,10 @@ class WeatherFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Wymaga aktualizację lokalizacji
+     *
+     */
     @SuppressLint("MissingPermission")
     private fun requestUpdateLocation() {
         if(hasPermissions(requireContext(), locationPermissions))
@@ -72,6 +87,10 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    /**
+     * Pobiera aktualne dane lokalizacyjne
+     *
+     */
     @SuppressLint("MissingPermission")
     private fun getLocation() {
         setVisibilityLayout(-1)
@@ -99,6 +118,13 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    /**
+     * Pobiera i przetwarza aktualne dane pogodowe dla podanych współrzędnych geograficznych
+     *
+     * @param latitude - szerokość geograficzna
+     * @param longitude - długość geograficzna
+     * @param countryCode - kod kraju
+     */
     private fun getWeather(latitude: Double, longitude: Double, countryCode: String) {
         var response: String?
 
@@ -173,6 +199,14 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    /**
+     * Pobiera dane pogody z API (format danych JSON)
+     *
+     * @param latitude - szerokość geograficzna
+     * @param longitude - długość geograficzna
+     * @param lang - język pobieranych danych
+     * @return dane pogody w formacie JSON
+     */
     private fun getAPI(latitude: Double, longitude: Double, lang: String): String? {
         val units = "metric"
         val keyAPI = "ad3e0e8a748a956db26f4cb39403848c"
@@ -186,6 +220,11 @@ class WeatherFragment : Fragment() {
         return response
     }
 
+    /**
+     * Ustawia widoczność layoutów na podstawie statusu przetworzenia danych
+     *
+     * @param status - status przetworzenia danych
+     */
     private fun setVisibilityLayout(status: Int) {
         when (status) {
             0 -> {
@@ -206,15 +245,34 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    /**
+     * Sprawdza czy użytkownik zezwolił na uprawienia lokalizacji
+     *
+     * @param context - kontekst aktualnego stanu aplikacji/obiektu
+     * @param permissions - lista uprawnień (lokalizacji)
+     * @return true - użytkownik zezwolił na uprawnienia lokalizacji
+     */
     private fun hasPermissions(context: Context, permissions: Array<String>): Boolean =
         permissions.all {
             ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
         }
 
+    /**
+     * Wyświetla użytkownikowi komunikat o zezwolenie na uprawnienia lokalizacji
+     *
+     * @param permissions - lista uprawnień (lokalizacji)
+     */
     private fun requirePermissions(permissions: Array<String>) {
         requestPermissions(permissions, locationRequestCode)
     }
 
+    /**
+     * Listener, który sprawdza czy użytkownik zezwolił na uprawnienia lokalizacji
+     *
+     * @param requestCode - kod komunikatu o zezwolenie na uprawnienia lokalizacji
+     * @param permissions - lista uprawnień (lokalizacji)
+     * @param grantResults - rezult przyznania uprawnień
+     */
     @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -234,6 +292,10 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    /**
+     * Funkcja wykonywana przy niszczeniu widoku
+     *
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

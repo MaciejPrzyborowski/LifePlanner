@@ -21,7 +21,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.life.planner.R
 import java.util.*
 
-
+/**
+ * Obsługuje RecyplerView.Adapter dla klasy Events
+ *
+ * @property recyclerView - uchwyt recyclerView
+ * @property db - uchwyt bazy danych
+ */
 class EventsRecyclerAdapter(private val recyclerView: RecyclerView, private val db: SQLiteDatabase) :
     RecyclerView.Adapter<EventsRecyclerAdapter.ViewHolder>() {
     private lateinit var dbID: ArrayList<String>
@@ -30,6 +35,13 @@ class EventsRecyclerAdapter(private val recyclerView: RecyclerView, private val 
     private lateinit var dbTimestamp: ArrayList<String>
     private var context: Context? = null
 
+    /**
+     * Funkcja wykonywana przy tworzeniu widoku
+     *
+     * @param viewGroup - uchwyt grupy widoków
+     * @param position - pozycja na liście
+     * @return widok adaptera
+     */
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ViewHolder {
         context = viewGroup.context
         val layoutInflater = LayoutInflater.from(context)
@@ -37,6 +49,11 @@ class EventsRecyclerAdapter(private val recyclerView: RecyclerView, private val 
         return ViewHolder(cardView)
     }
 
+    /**
+     * Zlicza ilość elementów do wyświetlenia na liście
+     *
+     * @return ilość elementów do wyświetlenia na liście
+     */
     override fun getItemCount(): Int {
         val cursor = db.query(DBInfo.TABLE_NAME, null, null, null, null, null, null)
         val cursorCount = cursor.count
@@ -44,6 +61,12 @@ class EventsRecyclerAdapter(private val recyclerView: RecyclerView, private val 
         return cursorCount
     }
 
+    /**
+     * Zarządza elementami ViewHoldera
+     *
+     * @param viewHolder - uchwyt recyclerView
+     * @param position - pozycja na liście
+     */
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         getEventsInfo()
         setEventsInfo(viewHolder, position)
@@ -52,13 +75,20 @@ class EventsRecyclerAdapter(private val recyclerView: RecyclerView, private val 
         }
     }
 
+    /**
+     * Wyświetla menu akcji wydarzenia
+     *
+     * @param view - uchwyt widoku
+     * @param eventID - identyfikator wydarzenia
+     * @param position - pozycja na liście
+     */
     private fun showPopUpMenu(view: View?, eventID: Int, position: Int) {
         val popupMenu = PopupMenu(context, view)
         popupMenu.menuInflater.inflate(R.menu.events_menu_options, popupMenu.menu)
         popupMenu.setOnMenuItemClickListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.menuUpdate -> {
-                    val addTask = AddTask(recyclerView, eventID, position)
+                    val addTask = AddEvent(recyclerView, eventID, position)
                     addTask.show((context as AppCompatActivity).supportFragmentManager, "addTask")
                 }
                 R.id.menuComplete -> {
@@ -76,18 +106,12 @@ class EventsRecyclerAdapter(private val recyclerView: RecyclerView, private val 
         popupMenu.show()
     }
 
-    private fun setEventsInfo(viewHolder: ViewHolder, position: Int) {
-        val dateItems = getDate(dbTimestamp[position]).split(" ")
-        viewHolder.eventId.text = dbID[position]
-        viewHolder.eventDay.text = dateItems[0]
-        viewHolder.eventDate.text = dateItems[1]
-        viewHolder.eventMonth.text = dateItems[2]
-        viewHolder.eventTitle.text = dbTitle[position]
-        viewHolder.eventDesc.text = dbDesc[position]
-        val timeText = dateItems[3] + ":" + dateItems[4]
-        viewHolder.eventTime.text = timeText
-    }
-
+    /**
+     * Wyświetla komunikat dla zakończonego zadania
+     *
+     * @param eventID - identyfikator wydarzenia
+     * @param position - pozycja na liście
+     */
     private fun showCompleteDialog(eventID: Int, position: Int) {
         val dialog = Dialog(context!!, android.R.style.Theme_Light_NoTitleBar_Fullscreen)
         dialog.setContentView(R.layout.dialog_completed)
@@ -103,6 +127,28 @@ class EventsRecyclerAdapter(private val recyclerView: RecyclerView, private val 
         dialog.show()
     }
 
+    /**
+     * Ustawia informacje o wydarzeniach
+     *
+     * @param viewHolder - uchwyt recyclerView
+     * @param position - pozycja na liście
+     */
+    private fun setEventsInfo(viewHolder: ViewHolder, position: Int) {
+        val dateItems = getDate(dbTimestamp[position]).split(" ")
+        viewHolder.eventId.text = dbID[position]
+        viewHolder.eventDay.text = dateItems[0]
+        viewHolder.eventDate.text = dateItems[1]
+        viewHolder.eventMonth.text = dateItems[2]
+        viewHolder.eventTitle.text = dbTitle[position]
+        viewHolder.eventDesc.text = dbDesc[position]
+        val timeText = dateItems[3] + ":" + dateItems[4]
+        viewHolder.eventTime.text = timeText
+    }
+
+    /**
+     * Pobiera informacje o wydarzeniach
+     *
+     */
     private fun getEventsInfo() {
         dbID = ArrayList()
         dbTitle = ArrayList()
@@ -126,12 +172,23 @@ class EventsRecyclerAdapter(private val recyclerView: RecyclerView, private val 
         cursor.close()
     }
 
+    /**
+     * Formatuje datę na podstawie podanego czasu w formacie Unix Timestamp
+     *
+     * @param time - czas wyrażony w formacie Unix Timestamp
+     * @return sformatowana data
+     */
     private fun getDate(time: String): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = time.toLong()
         return DateFormat.format("EE dd MMM HH mm", calendar).toString()
     }
 
+    /**
+     * ViewHolder klasy RecyclerView
+     *
+     * @param view - uchwyt widoku
+     */
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var eventId: TextView = view.findViewById(R.id.idEvent)
         var eventDay: TextView = view.findViewById(R.id.day)

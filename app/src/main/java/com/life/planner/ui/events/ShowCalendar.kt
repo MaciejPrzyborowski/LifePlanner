@@ -13,10 +13,20 @@ import com.life.planner.R
 import java.util.*
 
 
+/**
+ * Klasa obsługjąca wyświetlanie kalendarza z zaplowanymi wydarzeniami
+ *
+ */
 class ShowCalendar : BottomSheetDialogFragment() {
 
     private lateinit var dbDate: ArrayList<String>
 
+    /**
+     * Konfiguracja dialogu wyświetlanego na dole ekranu
+     *
+     * @param dialog - uchwyt dialogu
+     * @param style - styl dialogu
+     */
     @SuppressLint("RestrictedApi")
     override fun setupDialog(dialog: Dialog, style: Int) {
         super.setupDialog(dialog, style)
@@ -50,6 +60,11 @@ class ShowCalendar : BottomSheetDialogFragment() {
         calendarView.setEvents(setHighlightDays())
     }
 
+    /**
+     * Ustawia widoczne zaplanowane wydarzenia w kalendarzu
+     *
+     * @return zaplanowane wydarzenia w kalendarzu
+     */
     private fun setHighlightDays(): MutableList<EventDay> {
         val events: MutableList<EventDay> = ArrayList()
         for (data in dbDate) {
@@ -60,6 +75,11 @@ class ShowCalendar : BottomSheetDialogFragment() {
         return events
     }
 
+    /**
+     * Pobiera wszystkie daty zaplanowanych wydarzeń
+     *
+     * @param db - uchwyt bazy danych
+     */
     private fun getData(db: SQLiteDatabase) {
         dbDate = ArrayList()
         val cursor = db.query(
@@ -76,6 +96,13 @@ class ShowCalendar : BottomSheetDialogFragment() {
         cursor.close()
     }
 
+    /**
+     * Zlicza ilość wydarzeń zaplanowanych na konkretny dzień
+     *
+     * @param db - uchwyt bazy danych
+     * @param timestamp - czas wyrażony w formacie Unix Timestamp
+     * @return ilość wydarzeń zaplowanych na konkretny dzień
+     */
     private fun countDate(db: SQLiteDatabase, timestamp: Long): Int {
         val timestamp24h = timestamp + 24 * 60 * 60 * 1000
         val cursor = db.rawQuery(

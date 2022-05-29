@@ -10,10 +10,18 @@ import android.app.AlertDialog
 import android.widget.TextView
 import android.widget.Toast
 
-
+/**
+ * Klasa obsługująca ustawienia aplikacji
+ *
+ */
 @Suppress("DEPRECATION")
 class SettingsActivity : AppCompatActivity() {
 
+    /**
+     * Funkcja wykonywana przy tworzeniu widoku
+     *
+     * @param savedInstanceState - uchwyt Bundle
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title = resources.getString(R.string.action_settings)
@@ -28,6 +36,11 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Zmienia język aplikacji
+     *
+     * @param lang - zakodowany język aplikacji
+     */
     private fun setLocale(lang: String) {
         val locale = Locale(lang)
         Locale.setDefault(locale)
@@ -40,6 +53,10 @@ class SettingsActivity : AppCompatActivity() {
         Toast.makeText(this, resources.getString(R.string.settings_chooseLanguage_toast), Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * Wyświetla dialog z wyborem języka aplikacji
+     *
+     */
     private fun dialogChooseLanguage() {
         val languageDialog = AlertDialog.Builder(this)
         languageDialog.setTitle(resources.getString(R.string.settings_chooseLanguage_dialog))
@@ -52,6 +69,13 @@ class SettingsActivity : AppCompatActivity() {
         }
         languageDialog.create().show()
     }
+
+    /**
+     * Listener obsługujący wybór opcji z pola nawigacji
+     *
+     * @param item - menu item
+     * @return true
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {

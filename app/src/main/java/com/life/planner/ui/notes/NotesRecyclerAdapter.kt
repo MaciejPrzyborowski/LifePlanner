@@ -13,6 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.life.planner.R
 import java.util.*
 
+/**
+ * Obsługuje RecyplerView.Adapter dla klasy Notes
+ *
+ * @property db - uchwyt bazy danych
+ */
 class NotesRecyclerAdapter(private val db: SQLiteDatabase) :
     RecyclerView.Adapter<NotesRecyclerAdapter.ViewHolder>() {
     private lateinit var dbID: ArrayList<String>
@@ -21,6 +26,13 @@ class NotesRecyclerAdapter(private val db: SQLiteDatabase) :
     private lateinit var dbUpdated: ArrayList<String>
     private var context: Context? = null
 
+    /**
+     * Funkcja wykonywana przy tworzeniu widoku
+     *
+     * @param viewGroup - uchwyt grupy widoków
+     * @param position - pozycja na liście
+     * @return widok adaptera
+     */
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ViewHolder {
         context = viewGroup.context
         val layoutInflater = LayoutInflater.from(context)
@@ -28,6 +40,11 @@ class NotesRecyclerAdapter(private val db: SQLiteDatabase) :
         return ViewHolder(cardView)
     }
 
+    /**
+     * Zlicza ilość elementów do wyświetlenia na liście
+     *
+     * @return ilość elementów do wyświetlenia na liście
+     */
     override fun getItemCount(): Int {
         val cursor = db.query(DBInfo.TABLE_NAME, null, null, null, null, null, null)
         val cursorCount = cursor.count
@@ -35,6 +52,12 @@ class NotesRecyclerAdapter(private val db: SQLiteDatabase) :
         return cursorCount
     }
 
+    /**
+     * Zarządza elementami ViewHoldera
+     *
+     * @param viewHolder - uchwyt recyclerView
+     * @param position - pozycja na liście
+     */
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         getNotesInfo()
         setNotesInfo(viewHolder, position)
@@ -45,6 +68,12 @@ class NotesRecyclerAdapter(private val db: SQLiteDatabase) :
         }
     }
 
+    /**
+     * Ustawia informacje o notatkach
+     *
+     * @param viewHolder - uchwyt recyclerView
+     * @param position - pozycja na liście
+     */
     private fun setNotesInfo(viewHolder: ViewHolder, position: Int) {
         viewHolder.notesId.text = dbID[position]
         viewHolder.notesTitle.text = dbTitle[position]
@@ -52,6 +81,10 @@ class NotesRecyclerAdapter(private val db: SQLiteDatabase) :
         viewHolder.notesUpdated.text = getDate(dbUpdated[position])
     }
 
+    /**
+     * Pobiera informacje o notatkach
+     *
+     */
     private fun getNotesInfo() {
         dbID = ArrayList()
         dbTitle = ArrayList()
@@ -75,12 +108,23 @@ class NotesRecyclerAdapter(private val db: SQLiteDatabase) :
         cursor.close()
     }
 
+    /**
+     * Formatuje datę na podstawie podanego czasu w formacie Unix Timestamp
+     *
+     * @param time - czas wyrażony w formacie Unix Timestamp
+     * @return sformatowana data
+     */
     private fun getDate(time: String): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = time.toLong()
         return DateFormat.format("dd.MM.yyyy HH:mm:ss", calendar).toString()
     }
 
+    /**
+     * ViewHolder klasy RecyclerView
+     *
+     * @param view - uchwyt widoku
+     */
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var notesId: TextView = view.findViewById(R.id.idNote)
         var notesTitle: TextView = view.findViewById(R.id.noteTitle)
